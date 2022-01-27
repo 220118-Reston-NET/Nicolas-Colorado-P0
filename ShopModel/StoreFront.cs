@@ -10,7 +10,7 @@ namespace ShopModel
         
         public List<Product> Products 
         {
-
+            
         }
 
         public List<Order> Orders

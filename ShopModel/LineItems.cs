@@ -2,10 +2,18 @@ namespace ShopModel
 {
     public class LineItem
     {
-        public string Product { get; set; }
+        private List<Product> _product;
+        public List<Product> Product
+        {
+            get { return _product; }
+            set
+            {
+                _product = value;
 
+            }
+            
+        }
         public int Quantity { get; set; }
 
-        
     }
 }

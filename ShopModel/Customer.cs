@@ -8,15 +8,15 @@
 
         public string Email { get; set; }
 
-        public string Phone 
+        private double _phone;
+        public double Phone 
         { 
-            get; 
-
+            get { return _phone; }
             set
             {
-                Phone.ToString().Length;
+
                 //Cannot have more than 10 digits on a phone number
-                if (Phone.ToString().Length < 11)
+                if (_phone.ToString().Length == 10)
                 {
                     return set;
                 }
@@ -24,14 +24,25 @@
                 {
                     throw new Exception("Customer's phone number cannot have more than 10 digits!");
                 }
+
             } 
         }
+        private List<Order> _order;
 
-        public List<Order> Orders
+        public List<Order> Order
         {
-            
+            get { return _order; }
+            set 
+            {
+                _order = value;
+            }
         }
 
+        //String version of the object
+        public override string ToString()
+        {
+            return $"Name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: {_phone}\nList of Orders: {_order}";
+        }
 
     }
 }
