@@ -36,17 +36,19 @@ namespace ShopUI
                 case "3":
                     return "PlaceOrder"; 
                 case "4":
-                    return "ViewOrderHistory";
+                    return "ViewOrder";
                 case "5":
                     return "ViewStoreFront";
                 case "6":
                     return "Replenish";
                 case "7":
-                    return "Thank you for visiting Nick's Pawn Shop! Have a splendid day!";
+                    Console.WriteLine("Thank you for visiting Nick's Pawn Shop! Have a splendid day!");
+                    return "Exit";
+                
                 default:
                     Console.WriteLine("Please input a valid response.");
                     Console.WriteLine("Press the Enter button to continue.");
-                    return MainMenu;
+                    return "MainMenu";
 
             }
         }

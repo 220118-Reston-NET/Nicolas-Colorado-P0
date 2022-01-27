@@ -16,9 +16,19 @@ namespace ShopBL
 
         //====================================
 
-        public Customer AddProjectMenu(Customer p_customer)
+        public Customer AddCustomerMenu(Customer p_customer)
         {
-            return _repo.AddProjectMenu(p_customer);
+            return _repo.AddCustomerMenu(p_customer);
+        }
+
+        public List<Customer> SearchCustomerMenu(string p_name)
+        {
+            List<Customer> listofCustomer = _repo.GetAllCustomer();
+
+            //LINQ library
+            return listofCustomer
+                        .Where(customer => customer.Name.Contains(p_name))
+                        .ToList();
         }
     }
 }

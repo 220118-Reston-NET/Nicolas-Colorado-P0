@@ -35,24 +35,62 @@ namespace ShopUI
             switch (userInput)
             {
                 case "1":
-                    Console.WriteLine("Please enter a name:");
-                    //if (_newCustomer.Name == userInput)
-
-
-
-
-
-
-
-
-
-
-           // }
-            
-
-
-        //}
+                    Console.WriteLine("Please enter a name:"); //Logic to grab user input
+                    string name = Console.ReadLine();
+                    List<Customer> listofCustomer = _customerBL.SearchCustomer(name); //logic to display result
+                    foreach (var item in listofCustomer)
+                    {
+                        Console.WriteLine("\n");
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("Press the Enter button to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
+                case "2":
+                    Console.WriteLine("Please enter an address:"); 
+                    string address = Console.ReadLine();
+                    List<Customer> listofCustomer = _customerBL.SearchCustomer(address);
+                    foreach (var item in listofCustomer)
+                    {
+                        Console.WriteLine("\n");
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("Press the Enter button to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
+                case "3":
+                    Console.WriteLine("Please enter an email:"); 
+                    string email = Console.ReadLine();
+                    List<Customer> listofCustomer = _customerBL.SearchCustomer(email);
+                    foreach (var item in listofCustomer)
+                    {
+                        Console.WriteLine("\n");
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("Press the Enter button to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
+                case "4":
+                    Console.WriteLine("Please enter phone number (must be 10 digits):"); 
+                    double phone = Console.ReadLine();
+                    List<Customer> listofCustomer = _customerBL.SearchCustomer(phone);
+                    foreach (var item in listofCustomer)
+                    {
+                        Console.WriteLine("\n");
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("Press the Enter button to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
+                case "5":
+                    return "MainMenu";
+                default:
+                    Console.WriteLine("You've entered an invalid reponse.");
+                    Console.WriteLine("Please press the Enter button  to continue");
+                    Console.ReadLine();
+                    return "SearchCustomer";
+            }
+        }
     }
-
-    
 }
+            

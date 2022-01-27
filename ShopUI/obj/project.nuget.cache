@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "L1nSLI9Hwv05pDkxmjWlsain09I76FPiRJpkwapql1GGeddCSy3SjSgpaDeICsU2wcSostrDV7TZf0oj5+qF2Q==",
+  "dgSpecHash": "IiDs3LBnbK8PZ8fg53k+yD4cK0GEYJFUlMFiHr4UgvpF2YVDvowNPmnurjDooLKaXXTZFcdQYwH1rIyfzw1ReQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nickc\\Documents\\Revature\\Projects\\ProjectUI\\ProjectUI.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\nickc\\Documents\\Revature\\Project0\\ShopUI\\ShopUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nickc\\.nuget\\packages\\serilog\\2.11.0-dev-01380\\serilog.2.11.0-dev-01380.nupkg.sha512",
+    "C:\\Users\\nickc\\.nuget\\packages\\serilog.sinks.file\\5.0.1-dev-00947\\serilog.sinks.file.5.0.1-dev-00947.nupkg.sha512"
+  ],
   "logs": []
 }

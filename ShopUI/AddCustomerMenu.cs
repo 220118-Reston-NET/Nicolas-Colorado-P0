@@ -38,37 +38,45 @@ namespace ShopUI
             switch (userInput)
             {
                 case "7":
-                    return MainMenu;
+                    return "MainMenu";
                 case "1":
                     Console.WriteLine("Please enter a name:");
                     _newCustomer.Name = Console.ReadLine();
-                    return AddCustomerMenu;
+                    return "AddCustomerMenu";
                 case "2":
                     Console.WriteLine("Please enter an address:");
                     _newCustomer.Address = Console.ReadLine();
-                    return AddCustomerMenu;
+                    return "AddCustomerMenu";
                 case "3":
                     Console.WriteLine("Please enter an email:");
                     _newCustomer.Email = Console.ReadLine();
-                    return AddCustomerMenu;
+                    return "AddCustomerMenu";
                 case "4":
                     Console.WriteLine("Please enter a phone number:");
                     _newCustomer.Phone = Console.ReadLine();
-                    return AddCustomerMenu;
+                    return "AddCustomerMenu";
                 case "5":
                     Console.WriteLine("Please enter orders");
 
                     //Gonna need to figure out how to enter a list of orders, if necessary//
 
 
-                    return AddCustomerMenu;
+                    return "AddCustomerMenu";
                 case "6":
-                    return MainMenu;
+                    //Exception handling with logging to have better user experience
+                    try
+                    {
+                        Log.Information("Adding Customer information \n" + _newCustomer);
+                        _customerBL.AddCustomerMenu(_newCustomer);
+                        Log.Information("Successfully added Customer information!");
+                    }
+
+                    return "MainMenu";
                 default:                  
                     Console.WriteLine("You've made an invalid response.");
                     Console.WriteLine("Press the Enter button to continue.");
                     Console.ReadLine();
-                    return AddCustomerMenu;
+                    return "AddCustomerMenu";
             }
         }
 

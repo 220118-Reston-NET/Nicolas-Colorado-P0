@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "L+sheLQsk4vnQ+5X4qYl/hs0AEqMJOawwPvObH5S8aum/LXS633BFiLEuoD2GT36WGVRFDbQo+deuMGrHepcUQ==",
+  "dgSpecHash": "QOebISLzmfunkdePYfbISjCiNV1OosE71hG5LyGtAzdM2hEZt2Pwk+mwnubgZmJBQ+H5VkmRlEC86fmZc667/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nickc\\Documents\\Revature\\Projects\\ProjectDL\\ProjectDL.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\nickc\\Documents\\Revature\\Project0\\ShopDL\\ShopDL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nickc\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512"
+  ],
   "logs": []
 }

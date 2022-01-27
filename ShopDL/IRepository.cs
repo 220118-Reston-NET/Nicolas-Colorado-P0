@@ -7,11 +7,11 @@ namespace ShopDL
     public interface IRepository
     {
         //Add a customer to the database
-        Customer AddCustomer(Customer p_customer);
+        Customer AddCustomerMenu(Customer p_customer);
 
         //Will give all customer in the database
         //return a list of collection
-        
+        List<Customer> GetAllCustomer();
 
     }
 }

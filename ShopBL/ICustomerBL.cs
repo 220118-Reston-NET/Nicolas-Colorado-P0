@@ -7,6 +7,9 @@ namespace ShopBL
     public interface ICustomerBL
     {
         //Adds customers to the database
-        Customer AddCustomer(Customer p_customer);
+        Customer AddCustomerMenu(Customer p_customer);
+
+        //Will give list related to searched customer
+        List<Customer> SearchCustomerMenu(string p_name);
     }
 }

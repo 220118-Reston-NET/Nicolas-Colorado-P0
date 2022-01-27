@@ -1,0 +1,5 @@
+C:\Users\nickc\Documents\Revature\Project0\ShopDL\obj\Debug\net6.0\ShopDL.csproj.AssemblyReference.cache
+C:\Users\nickc\Documents\Revature\Project0\ShopDL\obj\Debug\net6.0\ShopDL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nickc\Documents\Revature\Project0\ShopDL\obj\Debug\net6.0\ShopDL.AssemblyInfoInputs.cache
+C:\Users\nickc\Documents\Revature\Project0\ShopDL\obj\Debug\net6.0\ShopDL.AssemblyInfo.cs
+C:\Users\nickc\Documents\Revature\Project0\ShopDL\obj\Debug\net6.0\ShopDL.csproj.CoreCompileInputs.cache
