@@ -6,12 +6,31 @@ namespace ShopDL
     //CRUD = Create, read, Update, Delete
     public interface IRepository
     {
-        //Add a customer to the database
+        /// <summary>
+        /// Add a customer to the database
+        /// </summary>
+        /// <param name="p_customer"></param>
+        /// <returns> Returns customer that was added. </returns>
         Customer AddCustomerMenu(Customer p_customer);
 
-        //Will give all customer in the database
-        //return a list of collection
+        /// <summary>
+        /// Search for customer in database based on search parameters
+        /// </summary>
+        /// <param name="p_customer"></param>
+        /// <returns> Returns customer that was searched for. </returns> 
+        Customer SearchCustomerMenu(Customer p_customer);
+
+        /// <summary>
+        /// Will give back all customers in the database in the form of a list.
+        /// </summary>
+        /// <returns> Returns a list collection of all customers in database. </returns>
         List<Customer> GetAllCustomer();
+
+        // <summary>
+        /// Will give back all the store fronts in the database (There's only one currently).
+        /// </summary>
+        /// <returns> Returns all store fronts. </returns>
+        List<StoreFront> GetAllStoreFront();
 
     }
 }

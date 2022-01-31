@@ -12,4 +12,9 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShopModel\ShopModel.csproj" />
+    <ProjectReference Include="..\ShopDL\ShopDL.csproj" />
+  </ItemGroup>
+
 </Project>

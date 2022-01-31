@@ -16,7 +16,7 @@
             {
 
                 //Cannot have more than 10 digits on a phone number
-                if (_phone.ToString().Length == 10)
+                if (_phone.Count() == 10)
                 {
                     return set;
                 }
@@ -28,20 +28,19 @@
             } 
         }
         private List<Order> _order;
-
         public List<Order> Order
         {
             get { return _order; }
             set 
             {
-                _order = value;
+                value = _order;
             }
         }
 
         //String version of the object
         public override string ToString()
         {
-            return $"Name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: {_phone}\nList of Orders: {_order}";
+            return $"Name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {_phone}\nCurrent Orders: {_order}";
         }
 
     }

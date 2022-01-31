@@ -20,7 +20,7 @@ namespace ShopUI
         
         public void Display()
         {
-            Console.WriteLine("Please enter the type of Customer information you would like to search for:");
+            Console.WriteLine("Please enter the type of Customer information you would like to search for:\n");
             Console.WriteLine("[1] - Customer Name");
             Console.WriteLine("[2] - Customer Address");
             Cosnole.WriteLine("[3] - Cusutomer Email");
@@ -85,8 +85,8 @@ namespace ShopUI
                 case "5":
                     return "MainMenu";
                 default:
-                    Console.WriteLine("You've entered an invalid reponse.");
-                    Console.WriteLine("Please press the Enter button  to continue");
+                    Console.WriteLine("You've selected an invalid reponse.");
+                    Console.WriteLine("Please press the Enter button  to continue.");
                     Console.ReadLine();
                     return "SearchCustomer";
             }

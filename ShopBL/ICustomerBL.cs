@@ -6,10 +6,18 @@ namespace ShopBL
     //obtained from database or user
     public interface ICustomerBL
     {
-        //Adds customers to the database
+        /// <summary>
+        /// Will add customer information to the database
+        /// </summary>
+        /// <param name="p_customer">this is the customer information</param>
+        /// <returns> Returns customer info. </returns>
         Customer AddCustomerMenu(Customer p_customer);
 
-        //Will give list related to searched customer
-        List<Customer> SearchCustomerMenu(string p_name);
+        /// <summary>
+        /// Will search for customer in the listed database based on search parameters.
+        /// </summary>
+        /// <param name="p_name">this is the customer information</param>
+        /// <returns> Returns a list of customer information based on search. </returns>
+        List<Customer> SearchCustomer(string p_name);
     }
 }

@@ -2,18 +2,13 @@ namespace ShopModel
 {
     public class LineItem
     {
-        private List<Product> _product;
-        public List<Product> Product
-        {
-            get { return _product; }
-            set
-            {
-                _product = value;
+        public string ProductName { get; set; }
 
-            }
-            
-        }
         public int Quantity { get; set; }
 
+        public override string ToString()
+        {
+            return $"{ProductName}\nQTY: {Quantity}";
+        }
     }
 }

@@ -13,7 +13,6 @@ namespace ShopBL
         {
             _repo = p_repo;
         }
-
         //====================================
 
         public Customer AddCustomerMenu(Customer p_customer)
@@ -21,7 +20,7 @@ namespace ShopBL
             return _repo.AddCustomerMenu(p_customer);
         }
 
-        public List<Customer> SearchCustomerMenu(string p_name)
+        public List<Customer> SearchCustomer(string p_name)
         {
             List<Customer> listofCustomer = _repo.GetAllCustomer();
 
