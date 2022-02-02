@@ -2,7 +2,7 @@
 
 create table Customer
 (
-	customerID int primary key,
+	customerID int identity(1,1) primary key,
 	Name varchar(50),
 	Address varchar(50),
 	Email varchar(50),
@@ -11,14 +11,14 @@ create table Customer
 
 create table Orders
 (
-	orderID int primary key,
+	orderID int identity(1,1) primary key,
 	StoreFrontLocation varchar(50),
 	TotalPrice float
 )
 
 create table Product 
 (
-	productID int primary key,
+	productID int identity(1,1) primary key,
 	Name varchar(50),
 	Price float,
 	Category varchar(50),
@@ -26,7 +26,7 @@ create table Product
 
 create table StoreFront 
 (
-	storeID int primary key,
+	storeID int identity(1,1) primary key,
 	Name varchar(50),
 	Address varchar(50),
 	Phone varchar(50)
@@ -76,7 +76,6 @@ select sf.storeID, p.productID from StoreFront sf
 inner join Inventory i on sf.storeID = i.storeID
 inner join Product p on p.productID = i.productID
 
- 
 
 
 

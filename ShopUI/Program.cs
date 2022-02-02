@@ -22,11 +22,11 @@ while (repeat)
     {
         case "AddCustomerMenu":
             Log.Information("Displaying AddCustomer menu to user");
-            menu = new AddCustomerMenu(new CustomerBL(new Repository()));
+            menu = new AddCustomerMenu(new CustomerBL(new SQLRepository()));
             break;
         case "SearchCustomerMenu":
             Log.Information("Displaing SearchCustomer menu to user");
-            menu = new SearchCustomerMenu(new CustomerBL(new Repository()));
+            menu = new SearchCustomer(new CustomerBL(new SQLRepository()));
             break;
         case "PlaceOrder":
             Log.Information("Displaying PlaceOrder menu to user");
