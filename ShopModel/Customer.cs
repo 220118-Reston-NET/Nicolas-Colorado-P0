@@ -2,21 +2,23 @@
 {
     public class Customer
     {   
+        public int customerID { get; set; }
+
         public string Name { get; set; }
 
         public string Address { get; set; }
 
         public string Email { get; set; }
 
-        private double _phone;
-        public double Phone 
+        private string _phone;
+        public string Phone 
         { 
             get { return _phone; }
             set
             {
 
                 //Cannot have more than 10 digits on a phone number
-                if (_phone.Count() == 10)
+                if (_phone.Length() == 10)
                 {
                     return set;
                 }
@@ -27,20 +29,20 @@
 
             } 
         }
-        private List<Order> _order;
-        public List<Order> Order
+        private List<Order> _orders;
+        public List<Order> Orders
         {
-            get { return _order; }
+            get { return _orders; }
             set 
             {
-                value = _order;
+                value = _orders;
             }
         }
 
         //String version of the object
         public override string ToString()
         {
-            return $"Name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {_phone}\nCurrent Orders: {_order}";
+            return $"Name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {_phone}\nCurrent Orders: {_orders}";
         }
 
     }

@@ -1,7 +1,9 @@
 namespace ShopModel
 {
-    public class Order
+    public class Orders
     {
+        public int orderID { get; set; }
+
         private List<LineItem> _lineItem;
 
         public List<LineItem> LineItem
@@ -15,6 +17,6 @@ namespace ShopModel
 
         public string StoreFrontLocation { get; set; }
 
-        public double Price { get; set; }
+        public double TotalPrice { get; set; }
     }
 }

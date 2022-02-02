@@ -2,12 +2,15 @@ namespace ShopModel
 {
     public class StoreFront
     {
+        public int storeID { get; set; }
 
         public string Name { get; set; }
         
         public string Address { get; set; }
 
-        private List<Products> _product;
+        public string Phone { get; set; }
+
+        private List<Product> _product;
         public List<Product> Product 
         {
             get { return _product; }
@@ -17,13 +20,13 @@ namespace ShopModel
             }
         }
 
-        private List<Order> _order;
-        public List<Order> Order
+        private List<Orders> _orders;
+        public List<Orders> Orders
         {
-            get { return _order; }
+            get { return _orders; }
             set 
             { 
-                value = _order;
+                value = _orders;
             }
         }
 
@@ -31,19 +34,20 @@ namespace ShopModel
         {
             Name = "Nick's Pawn Shop";
             Address = " 5470 Las Vegas Boulevard, Las Vegas, NV";
+            Phone = "429-009-PAWN";
             _product = new List<Product>()
             {
                 new Product()
             };
-            _order = new List<Product>()
+            _orders = new List<Orders>()
             {
-                new Order()
+                new Orders()
             };
         }
 
         public override string ToString()
         {
-            return $"Name: {Name}\nAddress: {Address}\nProducts: {_product}\nCurrent Orders: {_order}";
+            return $"Name: {Name}\nAddress: {Address}\nPhone: {Phone}\nProducts: {_product}\nCurrent Orders: {_orders}";
         }
     }
 }
