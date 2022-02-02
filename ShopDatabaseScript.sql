@@ -48,30 +48,33 @@ add storeID int foreign key references StoreFront(storeID)
 select * from StoreFront sf 
 inner join Orders o on sf.storeID = o.storeID
 
---Storefront + Products = Inventory
-alter table Product 
-add storeID int foreign key references Storefront(storeID)
 
-select * from StoreFront sf 
-inner join Product p on sf.
-
-alter table Product 
-drop storeID int foreign key references Storefront(storeID)
 
 --(Many-to-Many Relationships)
 -- Orders + Products = Lineitems
-create table orders_products
+create table LineItems --This table is now known as LineItems
 (
 	orderID int foreign key references Orders(orderID),
-	productID int foreign key references Product(productID)
+	productID int foreign key references Product(productID),
+	Quantity int
 )
 
-alter table orders_products 
-add Quantity int
+select o.orderID, p.productID from Orders o 
+inner join LineItems li  on o.orderID = li.orderID
+inner join Product p on p.productID = li.productID
 
-select o.orderID, p.Name from Orders o 
-inner join orders_products op on o.orderID = op.orderID
-inner join Product p on p.productID = op.productID
+
+--Storefront + Products = Inventory
+create table Inventory 
+(
+	storeID int foreign key references Storefront(storeID),
+	productID int foreign key references Product(productID),
+	Quantity int
+)
+
+select sf.storeID, p.productID from StoreFront sf 
+inner join Inventory i on sf.storeID = i.storeID
+inner join Product p on p.productID = i.productID
 
  
 
