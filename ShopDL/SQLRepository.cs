@@ -4,12 +4,20 @@ namespace ShopDL
 {
     public class SQLRepository : IRepository
     {
+        //SQLRepsitory point to connection string belonging to an existing database to create an object out of it
+        //It would also allow SQLRepository to point to different databases as long as you have the connection string
+        private readonly string _connectionStrings;
+        public SQLRepository(string p_connectionStrings)
+        {
+            _connectionStrings = p_connectionStrings;
+        }
+
         public Customer AddCustomer(Customer p_customer)
         {
             string sqlQuery = @"insert into Customer
                             values(@Name, @Address, @Email, @Phone)";
 
-            using (SqlConnection con = new SqlConnection("Server=tcp:projectshopdb.database.windows.net,1433;Initial Catalog=ShopDB;Persist Security Info=False;User ID=shopAdmin;Password=Ni515028!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
@@ -21,7 +29,6 @@ namespace ShopDL
 
                 command.ExecuteNonQuery();
             }    
-
             return p_customer;          
         }
 
@@ -31,7 +38,7 @@ namespace ShopDL
 
             string sqlQuery = @"select * from Customer";
 
-            using (SqlConnection co = new SqlConnection("Server=tcp:projectshopdb.database.windows.net,1433;Initial Catalog=ShopDB;Persist Security Info=False;User ID=shopAdmin;Password=Ni515028!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (SqlConnection co = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
@@ -51,7 +58,6 @@ namespace ShopDL
                     });
                 }
             }
-
             return listofcustomer;
         }
     }

@@ -1,4 +1,5 @@
 ﻿global using Serilog;
+using Microsoft.Extensions.Configuration;
 using ShopBL;
 using ShopDL;
 using ShopUI;
@@ -8,6 +9,14 @@ using ShopUI;
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File(".logs/user.txt") //Configures logger to save file
     .CreateLogger();
+
+//Reading and obtaining the connection strings from appsettings.json
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json")
+    .Build();
+
+string _connectionStrings = configuration.GetConnectionString("ShopDBConnection");
 
 bool repeat = true;
 IMenu menu = new MainMenu();
@@ -22,11 +31,11 @@ while (repeat)
     {
         case "AddCustomerMenu":
             Log.Information("Displaying AddCustomer menu to user");
-            menu = new AddCustomerMenu(new CustomerBL(new SQLRepository()));
+            menu = new AddCustomerMenu(new CustomerBL(new SQLRepository(_connectionStrings)));
             break;
         case "SearchCustomerMenu":
             Log.Information("Displaing SearchCustomer menu to user");
-            menu = new SearchCustomer(new CustomerBL(new SQLRepository()));
+            menu = new SearchCustomer(new CustomerBL(new SQLRepository(_connectionStrings)));
             break;
         case "PlaceOrder":
             Log.Information("Displaying PlaceOrder menu to user");
