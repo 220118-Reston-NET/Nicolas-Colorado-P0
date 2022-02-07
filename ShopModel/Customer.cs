@@ -16,7 +16,6 @@
             get { return _phone; }
             set
             {
-
                 //Cannot have more than 10 digits on a phone number
                 if (_phone.Length() == 10)
                 {
@@ -26,7 +25,6 @@
                 {
                     throw new Exception("Customer's phone number cannot have more than 10 digits!");
                 }
-
             } 
         }
         private List<Orders> _orders;
@@ -42,9 +40,8 @@
         //String version of the object
         public override string ToString()
         {
-            return $"Name: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {_phone}\nCurrent Orders: {_orders}";
+            return $"ID: {customerID}\nName: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {_phone}";
         }
-
     }
 }
 

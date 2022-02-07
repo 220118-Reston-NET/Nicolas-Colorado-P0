@@ -20,6 +20,16 @@ namespace ShopBL
             return _repo.AddCustomerMenu(p_customer);
         }
 
+        public List<Orders> GetOrderbyCustomerID(int p_customerID)
+        {
+            return _repo.GetOrderbyCustomerID(p_customerID);
+        }
+
+        public List<Customer> GetAllCustomer()
+        {
+            return _repo.GetAllCustomer();
+        }
+
         public List<Customer> SearchCustomer(string p_name)
         {
             List<Customer> listofCustomer = _repo.GetAllCustomer();

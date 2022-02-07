@@ -47,7 +47,7 @@ namespace ShopModel
 
         public override string ToString()
         {
-            return $"Name: {Name}\nAddress: {Address}\nPhone: {Phone}\nProducts: {_product}\nCurrent Orders: {_orders}";
+            return $"ID: {storeID}\nName: {Name}\nAddress: {Address}\nPhone: {Phone}";
         }
     }
 }

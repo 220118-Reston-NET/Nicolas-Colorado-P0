@@ -16,7 +16,7 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
-string _connectionStrings = configuration.GetConnectionString("ShopDBConnection");
+string _connectionString = configuration.GetConnectionString("ShopDBConnection");
 
 bool repeat = true;
 IMenu menu = new MainMenu();
@@ -31,27 +31,31 @@ while (repeat)
     {
         case "AddCustomerMenu":
             Log.Information("Displaying AddCustomer menu to user");
-            menu = new AddCustomerMenu(new CustomerBL(new SQLRepository(_connectionStrings)));
+            menu = new AddCustomerMenu(new CustomerBL(new SQLRepository(_connectionString)));
             break;
         case "SearchCustomerMenu":
             Log.Information("Displaing SearchCustomer menu to user");
-            menu = new SearchCustomer(new CustomerBL(new SQLRepository(_connectionStrings)));
+            menu = new SearchCustomer(new CustomerBL(new SQLRepository(_connectionString)));
             break;
         case "PlaceOrder":
             Log.Information("Displaying PlaceOrder menu to user");
-            menu = new PlaceOrder(new CustomerBL(new Repository()));
+            menu = new PlaceOrder(new CustomerBL(new SQLRepository(_connectionString)));
             break;
-        case "ViewOrder":
-            Log.Information("Displaying ViewOrder menu to user");
-            menu = new ViewOrder(new CustomerBL(new Repository()));
+        case "ViewCustomerOrder":
+            Log.Information("Displaying ViewCustomerOrder menu to user");
+            menu = new ViewCustomerOrder(new CustomerBL(new SQLRepository(_connectionString)));
             break;
-        case "ViewStoreFront":
+        case "ViewStoreOrder":
+            Log.Information("Displaying ViewStoreOrder menu to user");
+            menu = new ViewStoreOrder(new StoreFrontBL(new SQLRepository(_connectionString)));
+            break;
+        case "ViewInventory":
             Log.Information("Displaying ViewStoreFront menu to user");
-            menu = new ViewStoreFront(new CustomerBL(new Repository()));
+            menu = new ViewInventory(new StoreFrontBL(new SQLRepository(_connectionString)));
             break;
         case "Replenish":
             Log.Information("Displaying Replenish menu to user");
-            menu = new Replenish(new CustomerBL(new Repository()));
+            menu = new Replenish(new CustomerBL(new SQLRepository(_connectionString)));
             break;
         case "MainMenu":
             Log.Information("Displaying MainMenu to user");

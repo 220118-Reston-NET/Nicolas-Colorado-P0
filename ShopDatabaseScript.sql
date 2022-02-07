@@ -16,6 +16,7 @@ create table Orders
 	TotalPrice float
 )
 
+
 create table Product 
 (
 	productID int identity(1,1) primary key,
@@ -59,7 +60,7 @@ create table LineItems --This table is now known as LineItems
 	Quantity int
 )
 
-select o.orderID, p.productID from Orders o 
+select p.productID, p.Name, li.Quantity from Orders o 
 inner join LineItems li  on o.orderID = li.orderID
 inner join Product p on p.productID = li.productID
 
@@ -72,9 +73,40 @@ create table Inventory
 	Quantity int
 )
 
-select sf.storeID, p.productID from StoreFront sf 
+select sf.storeID, p.productID, p.Name, i.Quantity from StoreFront sf 
 inner join Inventory i on sf.storeID = i.storeID
 inner join Product p on p.productID = i.productID
+
+
+--Now, it's time to create tables and SQL statements to enable the View Order and View Inventory functionalities.
+
+--Show orders made by a customer
+--Customer + Orders = ViewOrder
+
+create table ViewOrder 
+(
+	customerID int foreign key references Customer(customerID),
+	orderID int foreign key references Orders(orderID)
+)
+
+select o.orderID, o.storeID, o.StoreFrontLocation, o.TotalPrice from Customer c 
+inner join ViewOrder vo on c.customerID = vo.customerID 
+inner join Orders o on o.orderID = vo.orderID 
+
+
+
+--Show orders made under a store
+--StoreFront + orders = ViewStoreOrder
+
+create table ViewStoreOrder
+(
+	storeID int foreign key references StoreFront(storeID),
+	orderID int foreign key references Orders(orderID)
+)
+
+select o.orderID, o.customerID, o.StoreFrontLocation, o.TotalPrice from StoreFront sf 
+inner join ViewStoreOrder vso on sf.storeID = vso.storeID 
+inner join Orders o on o.orderID = vso.orderID 
 
 
 

@@ -72,7 +72,7 @@ namespace ShopUI
                     }
                     catch (System.Exception exc)
                     {
-                        Log.Warning("Failed to add customer information");
+                        Log.Warning("Failed to add customer information.");
                         Console.WriteLine(exc.Message);
                         Console.WriteLine("Please press Enter to continue");
                         Console.ReadLine();
@@ -100,5 +100,4 @@ namespace ShopUI
             }
         }
     }   
-
 }

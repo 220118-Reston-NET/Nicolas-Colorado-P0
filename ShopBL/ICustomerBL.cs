@@ -19,5 +19,19 @@ namespace ShopBL
         /// <param name="p_name">this is the customer information</param>
         /// <returns> Returns a list of customer information based on search. </returns>
         List<Customer> SearchCustomer(string p_name);
+
+        /// <summary>
+        /// Will give back all customers in the database in the form of a list.
+        /// </summary>
+        /// <returns> Returns a list collection of all customers in database. </returns>
+        List<Customer> GetAllCustomer();
+
+        /// <summary>
+        /// Will give back a list of orders by customer (There's only one currently).
+        /// </summary>
+        /// <param name="p_customerID"></param>
+        /// <returns> Returns a list collection of order objects. </returns>
+        List<Orders> GetOrderbyCustomerID(int p_customerID);
+
     }
 }

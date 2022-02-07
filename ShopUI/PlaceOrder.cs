@@ -1,4 +1,4 @@
-namespace ProjectUI
+namespace ShopUI
 {
     public class PlaceOrder
     {

@@ -3,30 +3,30 @@ using ShopModel;
 
 namespace ShopUI
 {
-    public class ViewInventory : IMenu
+    public class ViewCustomerOrder : IMenu
     {
-        private List<StoreFront> _listofStoreFront;
+        private List<Customer> _listofCustomer;
 
-        //Dependency Injection with StoreFrontBL
-        private IStoreFrontBL _storeBL;
+        //Dependency Injection with CustomerBL
+        private ICustomerBL _customerBL;
 
-        public ViewInventory(IStoreFrontBL p_storeBL)
+        public ViewCustomerOrder(ICustomerBL p_customerBL)
         {
-            _storeBL = p_storeBL;
-            _listofStoreFront = _storeBL.ViewInventory();
+            _customerBL = p_customerBL;
+            _listofCustomer = _customerBL.ViewCustomerOrder();
         }
 
         public void Display()
         {
-            foreach (var item in _listofStoreFront)
+            foreach (var item in _listofCustomer)
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(item);
             }
             
-            Console.WriteLine("Displayed above is a list of stores currently in our database. To view a store's inventory, enter their ID.");
+            Console.WriteLine("Displayed above is a list of customers currently in our database. To view a customer's order history, enter their ID.");
             Console.WriteLine("What would you like to do?\n");
-            Console.WriteLine("[1] - Select a store by ID");
+            Console.WriteLine("[1] - Select a customer by ID");
             Console.WriteLine("[2] - Return to Main Menu");
         }
 
@@ -37,13 +37,12 @@ namespace ShopUI
             switch (userInput)
             {
                 case "1":
-                    Console.WriteLine("Please enter store's ID:");
+                    Console.WriteLine("Please enter customer's ID:");
                     try
                     {
                         int customerID = Convert.ToInt32(Console.ReadLine());
-                        List<Product> listofProducts = _storeBL.GetProductbyStoreID(storeID);
-                        Console.WriteLine("=============== Inventory ===============");
-                        foreach (var item in listofProducts)
+                        List<Orders> listofOrders = _customerBL.GetOrderbyCustomerID(customerID);
+                        foreach (var item in listofOrders)
                         {
                             Console.WriteLine("====================");
                             Console.WriteLine(item);

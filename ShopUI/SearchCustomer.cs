@@ -86,7 +86,7 @@ namespace ShopUI
                     return "MainMenu";
                 default:
                     Console.WriteLine("You've selected an invalid reponse.");
-                    Console.WriteLine("Please press the Enter button  to continue.");
+                    Console.WriteLine("Please press the Enter button to continue.");
                     Console.ReadLine();
                     return "SearchCustomer";
             }
