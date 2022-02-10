@@ -11,14 +11,7 @@ namespace ShopDL
         /// </summary>
         /// <param name="p_customer"></param>
         /// <returns> Returns customer that was added. </returns>
-        Customer AddCustomerMenu(Customer p_customer);
-
-        /// <summary>
-        /// Search for customer in database based on search parameters
-        /// </summary>
-        /// <param name="p_customer"></param>
-        /// <returns> Returns customer that was searched for. </returns> 
-        Customer SearchCustomer(Customer p_customer);
+        Customer AddCustomer(Customer p_customer);
 
         /// <summary>
         /// Will give back all customers in the database in the form of a list.
@@ -45,6 +38,13 @@ namespace ShopDL
         /// <param name="p_storeID"></param>
         /// <returns> Returns a list collection of order objects. </returns>
         List<Orders> GetOrderbyStoreID(int p_storeID);
+
+        /// <summary>
+        /// Will give back a list of products by store. (There's only one currently).
+        /// </summary>
+        /// <param name="p_storeID"></param>
+        /// <returns> Returns a list collection of order objects. </returns>
+        List<Product> GetProductbyStoreID(int p_storeID);
 
     }
 }

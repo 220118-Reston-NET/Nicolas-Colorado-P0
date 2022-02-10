@@ -14,14 +14,13 @@ public class CustomerModelTest
     {
         //Arrange
         Customer cust = new Customer();
-        int validPhone = 10;
+        string validPhone = "4072797735";
         
         //Act
         cust.Phone = validPhone;
 
         //Assert
-        Assert.NotNull(cust); 
+        Assert.NotNull(cust.Phone); 
         Assert.Equal(validPhone, cust.Phone);
     }
-
 }

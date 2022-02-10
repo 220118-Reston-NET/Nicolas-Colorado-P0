@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ShopModel\ShopModel.csproj" />
     <ProjectReference Include="..\ShopDL\ShopDL.csproj" />
+    <ProjectReference Include="..\ShopBL\ShopBL.csproj" />
   </ItemGroup>
 
 </Project>

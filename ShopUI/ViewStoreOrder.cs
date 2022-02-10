@@ -13,12 +13,12 @@ namespace ShopUI
         public ViewStoreOrder(IStoreFrontBL p_storeBL)
         {
             _storeBL = p_storeBL;
-            _listofStoreFront = _storeBL.ViewStoreOrder();
+            _listofStoreFront = _storeBL.GetAllStoreFront();
         }
 
         public void Display()
         {
-            foreach (var item in _listofStore)
+            foreach (var item in _listofStoreFront)
             {
                 Console.WriteLine("====================");
                 Console.WriteLine(item);
@@ -57,14 +57,15 @@ namespace ShopUI
                     {
                         Console.WriteLine("You've selected an invalid response.");
                         Console.WriteLine("Press the Enter button to continue.");
-                        return "ViewCustomerOrder";  
+                        return "ViewStoreOrder";  
                     }
+                    return "ViewStoreOrder";
                 case "2":
                     return "MainMenu";
                 default:
                     Console.WriteLine("You've selected an invalid response.");
                     Console.WriteLine("Press the Enter button to continue.");
-                    return "ViewCustomerOrder";
+                    return "ViewStoreOrder";
             }
         }
     }

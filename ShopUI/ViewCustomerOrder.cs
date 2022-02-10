@@ -13,7 +13,7 @@ namespace ShopUI
         public ViewCustomerOrder(ICustomerBL p_customerBL)
         {
             _customerBL = p_customerBL;
-            _listofCustomer = _customerBL.ViewCustomerOrder();
+            _listofCustomer = _customerBL.GetAllCustomer();
         }
 
         public void Display()
@@ -59,6 +59,7 @@ namespace ShopUI
                         Console.WriteLine("Press the Enter button to continue.");
                         return "ViewCustomerOrder";  
                     }
+                    return "ViewCustomerOrder";
                 case "2":
                     return "MainMenu";
                 default:

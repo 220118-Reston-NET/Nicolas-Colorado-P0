@@ -17,13 +17,17 @@ create table Orders
 )
 
 
-create table Product 
+create table Product
 (
 	productID int identity(1,1) primary key,
 	Name varchar(50),
 	Price float,
 	Category varchar(50),
+	Quantity int
 )
+
+alter table Product 
+add Quantity int
 
 create table StoreFront 
 (
@@ -70,10 +74,12 @@ create table Inventory
 (
 	storeID int foreign key references Storefront(storeID),
 	productID int foreign key references Product(productID),
-	Quantity int
 )
 
-select sf.storeID, p.productID, p.Name, i.Quantity from StoreFront sf 
+alter table Inventory 
+drop column Quantity
+
+select p.productID, p.Name, p.Price, p.Category, p.Quantity from StoreFront sf 
 inner join Inventory i on sf.storeID = i.storeID
 inner join Product p on p.productID = i.productID
 
@@ -108,6 +114,7 @@ select o.orderID, o.customerID, o.StoreFrontLocation, o.TotalPrice from StoreFro
 inner join ViewStoreOrder vso on sf.storeID = vso.storeID 
 inner join Orders o on o.orderID = vso.orderID 
 
+------select max(e.empId) from Employee e
 
 
 

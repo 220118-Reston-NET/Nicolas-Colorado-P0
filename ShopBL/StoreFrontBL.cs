@@ -14,11 +14,17 @@ namespace ShopBL
         }
         //====================================
 
+
         public List<Orders> GetOrderbyStoreID(int p_storeID)
         {
             return _repo.GetOrderbyStoreID(p_storeID);
         }
 
+        public List<Product> GetProductbyStoreID(int p_storeID)
+        {
+            return _repo.GetProductbyStoreID(p_storeID);
+        }
+        
         public List<StoreFront> GetAllStoreFront()
         {
             return _repo.GetAllStoreFront();

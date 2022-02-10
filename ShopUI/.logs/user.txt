@@ -1,0 +1,22 @@
+2022-02-10 12:31:11.492 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:31:43.589 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 12:31:45.256 -05:00 [INF] Exiting application
+2022-02-10 12:41:56.040 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:42:07.489 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:42:17.552 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:42:49.498 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:43:16.604 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:43:25.734 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 12:44:49.662 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:45:44.619 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 12:45:46.158 -05:00 [INF] Exiting application
+2022-02-10 12:45:56.335 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:46:05.659 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:46:29.192 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:46:43.951 -05:00 [INF] Displaying AddCustomer menu to user
+2022-02-10 12:55:14.178 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 12:55:19.481 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 13:01:00.611 -05:00 [INF] Exiting application
+2022-02-10 13:02:37.884 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 13:02:55.607 -05:00 [INF] Displaying MainMenu to user
+2022-02-10 13:02:57.494 -05:00 [INF] Exiting application

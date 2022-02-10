@@ -317,6 +317,20 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "ShopBL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ShopDL": "1.0.0",
+          "ShopModel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ShopBL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShopBL.dll": {}
+        }
+      },
       "ShopDL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -990,6 +1004,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "ShopBL/1.0.0": {
+      "type": "project",
+      "path": "../ShopBL/ShopBL.csproj",
+      "msbuildProject": "../ShopBL/ShopBL.csproj"
+    },
     "ShopDL/1.0.0": {
       "type": "project",
       "path": "../ShopDL/ShopDL.csproj",
@@ -1008,6 +1027,7 @@
       "Microsoft.Extensions.Configuration.Json >= 6.0.2-mauipre.1.22054.8",
       "Serilog >= 2.11.0-dev-01380",
       "Serilog.Sinks.File >= 5.0.1-dev-00947",
+      "ShopBL >= 1.0.0",
       "ShopDL >= 1.0.0",
       "ShopModel >= 1.0.0"
     ]
@@ -1037,6 +1057,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\ShopBL.csproj": {
+              "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\ShopBL.csproj"
+            },
             "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj": {
               "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj"
             },

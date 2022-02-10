@@ -1,7 +1,6 @@
 using ShopBL;
 using ShopModel;
 
-
 namespace ShopUI
 {
     public class AddCustomerMenu : IMenu
@@ -26,7 +25,7 @@ namespace ShopUI
             Console.WriteLine("[3] - Email: " + _newCustomer.Email);
             Console.WriteLine("[4] - Phone: " + _newCustomer.Phone);
             Console.WriteLine("[5] - Save Information");
-            Console.WriteLine("[6] - Return to Main Menu");
+            Console.WriteLine("[6] - Return to Main Menu\n");
 
         }
 
@@ -38,18 +37,8 @@ namespace ShopUI
             {
                 case "1":
                     Console.WriteLine("Please enter a name:");
-                    string choice = Console.ReadLine();
-                    if (choice.IsAlphabetic() == false)
-                    {
-                        Console.WriteLine("Name must only contain alpabetic characters (abcABC).");
-                        return userInput == "1";
-                    }
-                    else
-                    {
-                        choice = _newCustomer.Name;
-                        return "AddCustomerMenu";
-                    }
-                    
+                    _newCustomer.Name = Console.ReadLine(); 
+                    return "AddCustomerMenu";
                 case "2":
                     Console.WriteLine("Please enter an address:");
                     _newCustomer.Address = Console.ReadLine();
@@ -67,7 +56,7 @@ namespace ShopUI
                     try
                     {
                         Log.Information("Adding customer information \n" + _newCustomer);
-                        _customerBL.AddCustomerMenu(_newCustomer);
+                        _customerBL.AddCustomer(_newCustomer);
                         Log.Information("Successfully added customer's information!");
                     }
                     catch (System.Exception exc)
@@ -77,24 +66,12 @@ namespace ShopUI
                         Console.WriteLine("Please press Enter to continue");
                         Console.ReadLine();
                     }
-
                     return "MainMenu";
-                    
                 case "6":
-                    Console.WriteLine("Are you sure you want to exit?");
-                    Console.WriteLine("Press the 1 key to return to the Main Menu. Otherwise, press any key to stay in the current menu.");
-                    string choice = Console.ReadLine();
-                    if (choice == "1")
-                    {
-                        return "MainMenu";
-                    }
-                    else 
-                    {
-                        return "AddCustomerMenu";
-                    }
+                    return "MainMenu";
                 default:                  
                     Console.WriteLine("You've selected an invalid response.");
-                    Console.WriteLine("Press the Enter button to continue.");
+                    Console.WriteLine("Press the Enter key to continue.\n");
                     Console.ReadLine();
                     return "AddCustomerMenu";
             }

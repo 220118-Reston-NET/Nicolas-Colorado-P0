@@ -1,0 +1,17 @@
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.csproj.AssemblyReference.cache
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.AssemblyInfoInputs.cache
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.AssemblyInfo.cs
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.csproj.CoreCompileInputs.cache
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopBL.deps.json
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopBL.dll
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ref\ShopBL.dll
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopBL.pdb
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopDL.dll
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopModel.dll
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopModel.pdb
+C:\Users\nickc\Documents\Project0\ShopBL\bin\Debug\net6.0\ShopDL.pdb
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.csproj.CopyComplete
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.dll
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ref\ShopBL.dll
+C:\Users\nickc\Documents\Project0\ShopBL\obj\Debug\net6.0\ShopBL.pdb

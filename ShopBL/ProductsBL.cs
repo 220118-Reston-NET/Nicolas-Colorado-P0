@@ -1,7 +1,7 @@
-namespace ShopBL
-{
-    public class ProductBL : IProductBL
-    {
+// namespace ShopBL
+// {
+//     public class ProductBL : IProductBL
+//     {
         
-    }
-}
+//     }
+// }

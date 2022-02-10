@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\ShopBL.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\ShopBL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\ShopBL.csproj",
+        "projectName": "ShopBL",
+        "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\ShopBL.csproj",
+        "packagesPath": "C:\\Users\\nickc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopBL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nickc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj": {
+                "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj"
+              },
+              "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj": {
+                "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj",
+        "projectName": "ShopDL",
+        "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\ShopDL.csproj",
+        "packagesPath": "C:\\Users\\nickc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopDL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nickc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj": {
+                "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.1-dev-00947, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj",
+        "projectName": "ShopModel",
+        "projectPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\ShopModel.csproj",
+        "packagesPath": "C:\\Users\\nickc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nickc\\Documents\\Project0\\ShopModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nickc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

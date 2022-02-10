@@ -3,3 +3,10 @@ C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ShopModel.Generated
 C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ShopModel.AssemblyInfoInputs.cache
 C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ShopModel.AssemblyInfo.cs
 C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ShopModel.csproj.CoreCompileInputs.cache
+C:\Users\nickc\Documents\Project0\ShopModel\bin\Debug\net6.0\ShopModel.deps.json
+C:\Users\nickc\Documents\Project0\ShopModel\bin\Debug\net6.0\ShopModel.dll
+C:\Users\nickc\Documents\Project0\ShopModel\bin\Debug\net6.0\ref\ShopModel.dll
+C:\Users\nickc\Documents\Project0\ShopModel\bin\Debug\net6.0\ShopModel.pdb
+C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ShopModel.dll
+C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ref\ShopModel.dll
+C:\Users\nickc\Documents\Project0\ShopModel\obj\Debug\net6.0\ShopModel.pdb

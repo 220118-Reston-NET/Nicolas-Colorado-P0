@@ -4,6 +4,8 @@ namespace ShopModel
     {
         public int orderID { get; set; }
 
+        public int customerID { get; set; }
+
         public int storeID { get; set; }
 
         private List<LineItem> _lineItem;
@@ -13,7 +15,7 @@ namespace ShopModel
             get { return _lineItem; }
             set
             {
-                value = _lineItem;
+                _lineItem = value;
             }
         }
 

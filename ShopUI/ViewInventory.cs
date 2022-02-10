@@ -13,7 +13,7 @@ namespace ShopUI
         public ViewInventory(IStoreFrontBL p_storeBL)
         {
             _storeBL = p_storeBL;
-            _listofStoreFront = _storeBL.ViewInventory();
+            _listofStoreFront = _storeBL.GetAllStoreFront();
         }
 
         public void Display()
@@ -24,9 +24,9 @@ namespace ShopUI
                 Console.WriteLine(item);
             }
             
-            Console.WriteLine("Displayed above is a list of stores currently in our database. To view a store's inventory, enter their ID.");
+            Console.WriteLine("Displayed above is a list of stores currently available.\n");
             Console.WriteLine("What would you like to do?\n");
-            Console.WriteLine("[1] - Select a store by ID");
+            Console.WriteLine("[1] - View a store's inventory");
             Console.WriteLine("[2] - Return to Main Menu");
         }
 
@@ -40,7 +40,7 @@ namespace ShopUI
                     Console.WriteLine("Please enter store's ID:");
                     try
                     {
-                        int customerID = Convert.ToInt32(Console.ReadLine());
+                        int storeID = Convert.ToInt32(Console.ReadLine());
                         List<Product> listofProducts = _storeBL.GetProductbyStoreID(storeID);
                         Console.WriteLine("=============== Inventory ===============");
                         foreach (var item in listofProducts)
@@ -58,14 +58,15 @@ namespace ShopUI
                     {
                         Console.WriteLine("You've selected an invalid response.");
                         Console.WriteLine("Press the Enter button to continue.");
-                        return "ViewCustomerOrder";  
+                        return "ViewInventory";  
                     }
+                    return "ViewInventory";
                 case "2":
                     return "MainMenu";
                 default:
                     Console.WriteLine("You've selected an invalid response.");
                     Console.WriteLine("Press the Enter button to continue.");
-                    return "ViewCustomerOrder";
+                    return "ViewInventory";
             }
         }
     }

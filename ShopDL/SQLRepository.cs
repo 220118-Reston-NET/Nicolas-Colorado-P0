@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using ShopModel;
 
 namespace ShopDL
@@ -12,7 +13,8 @@ namespace ShopDL
             _connectionStrings = p_connectionStrings;
         }
 
-        public Customer AddCustomerMenu(Customer p_customer)
+
+        public Customer AddCustomer(Customer p_customer)
         {
             string sqlQuery = @"insert into Customer
                             values(@Name, @Address, @Email, @Phone)";
@@ -39,9 +41,8 @@ namespace ShopDL
 
             string sqlQuery = @"select o.orderID, o.storeID, o.StoreFrontLocation, o.TotalPrice from Customer c 
                             inner join ViewOrder vo on c.customerID = vo.customerID 
-                            inner join Orders o on o.orderID = vo.orderID
-                            where c.customerID = @customerID";
-            
+                            inner join Orders o on o.orderID = vo.orderID";
+                            
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
@@ -55,24 +56,24 @@ namespace ShopDL
                 {
                     listofOrders.Add(new Orders()
                     {
+                        //reader column is not based on table structure but on your select query statement is displaying
                         orderID = reader.GetInt32(0),
                         storeID = reader.GetInt32(1),
-                        Location = reader.GetInt32(2),
-                        TotalPrice = reader.GetInt32(3)
+                        StoreFrontLocation = reader.GetString(2),
+                        TotalPrice = reader.GetDouble(3)
                     });
                 }
             }
-            return p_customerID;
+            return listofOrders;
         }
-
 
         public List<Customer> GetAllCustomer()
         {
-            List<AddCustomerMenu> listofCustomer = new List<Customer>();
+            List<Customer> listofCustomer = new List<Customer>();
 
             string sqlQuery = @"select * from Customer";
 
-            using (SqlConnection co = new SqlConnection(_connectionStrings))
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
@@ -84,12 +85,13 @@ namespace ShopDL
                 {
                     listofCustomer.Add(new Customer()
                     {
+                        //Zero-based column index
                         customerID = reader.GetInt32(0),
                         Name = reader.GetString(1),
                         Address = reader.GetString(2),
                         Email = reader.GetString(3),
                         Phone = reader.GetString(4),
-                        Orders = reader.GetOrderbyCustomerID(reader.GetInt32(0))
+                        Orders = GetOrderbyCustomerID(reader.GetInt32(0))
                     });
                 }
             }
@@ -120,12 +122,12 @@ namespace ShopDL
                     {
                         orderID = reader.GetInt32(0),
                         customerID = reader.GetInt32(1),
-                        Location = reader.GetInt32(2),
-                        TotalPrice = reader.GetInt32(3)
+                        StoreFrontLocation = reader.GetString(2),
+                        TotalPrice = reader.GetDouble(3)
                     });
                 }
             }
-            return p_storeID;
+            return listofOrders;
         }
 
 
@@ -133,7 +135,7 @@ namespace ShopDL
         {
             List<Product> listofProducts = new List<Product>();
 
-            string sqlQuery = @"select sf.storeID, p.productID, p.Name, i.Quantity from StoreFront sf 
+            string sqlQuery = @"select p.productID, p.Name, p.Price, p.Category, p.Quantity from StoreFront sf 
                             inner join Inventory i on sf.storeID = i.storeID
                             inner join Product p on p.productID = i.productID";
             
@@ -150,23 +152,25 @@ namespace ShopDL
                 {
                     listofProducts.Add(new Product()
                     {
-                        storeID = reader.GetInt32(0),
-                        productID = reader.GetInt32(1),
-                        Name = reader.GetString(2),
-                        Quantity = reader.GetInt32(3)
+                        productID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Price = reader.GetDouble(2),
+                        Category = reader.GetString(3),
+                        Quantity = reader.GetInt32(4)
                     });
                 }
             }
-            return p_storeID;
+            return listofProducts;
         }
         
 
         public List<StoreFront> GetAllStoreFront()
         {
+            List<StoreFront> listofStoreFront = new List<StoreFront>();
 
             string sqlQuery = @"select * from StoreFront";
 
-            using (SqlConnection co = new SqlConnection(_connectionStrings))
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
@@ -182,8 +186,8 @@ namespace ShopDL
                         Name = reader.GetString(1),
                         Address = reader.GetString(2),
                         Phone = reader.GetString(3),
-                        Products = reader.GetProductbyStoreID(reader.GetInt32(0)),
-                        Orders = reader.GetOrderbyCustomerID(reader.GetInt32(0))
+                        Product = GetProductbyStoreID(reader.GetInt32(0)),
+                        Orders = GetOrderbyCustomerID(reader.GetInt32(0))
                     });
                 }
             }

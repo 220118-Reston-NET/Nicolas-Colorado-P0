@@ -7,18 +7,19 @@ namespace ShopBL
     public interface ICustomerBL
     {
         /// <summary>
-        /// Will add customer information to the database
+        /// Will add customer infofrmation to the database.
         /// </summary>
-        /// <param name="p_customer">this is the customer information</param>
-        /// <returns> Returns customer info. </returns>
-        Customer AddCustomerMenu(Customer p_customer);
+        /// <param name="p_customer"></param>
+        /// <returns>Returns a customer's information</returns>
+        Customer AddCustomer(Customer p_customer);
 
         /// <summary>
         /// Will search for customer in the listed database based on search parameters.
         /// </summary>
-        /// <param name="p_name">this is the customer information</param>
+        /// <param name="c_search">This is whatever search parameter the user chose.</param>
+        /// <param name="c_name">The parameter holding the customer information.</param>
         /// <returns> Returns a list of customer information based on search. </returns>
-        List<Customer> SearchCustomer(string p_name);
+        List<Customer> SearchCustomer(string c_search, string c_name);
 
         /// <summary>
         /// Will give back all customers in the database in the form of a list.

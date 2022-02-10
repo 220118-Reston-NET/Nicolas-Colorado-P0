@@ -17,9 +17,10 @@
             set
             {
                 //Cannot have more than 10 digits on a phone number
-                if (_phone.Length() == 10)
+                int v = _phone.Length;
+                if (v == 10)
                 {
-                    return set;
+                    _phone = value;
                 }
                 else 
                 {
@@ -33,14 +34,26 @@
             get { return _orders; }
             set 
             {
-                value = _orders;
+                _orders = value;
             }
+        }
+
+        public Customer()
+        {
+            Name = "";
+            Address = "";
+            Email = "";
+            _phone = "";
+            _orders = new List<Orders>()
+            {
+                new Orders()
+            };
         }
 
         //String version of the object
         public override string ToString()
         {
-            return $"ID: {customerID}\nName: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {_phone}";
+            return $"ID: {customerID}\nName: {Name}\nAddress: {Address}\nEmail: {Email}\nPhone: +1 {Phone}";
         }
     }
 }

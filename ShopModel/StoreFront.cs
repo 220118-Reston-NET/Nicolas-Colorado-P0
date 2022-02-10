@@ -16,7 +16,7 @@ namespace ShopModel
             get { return _product; }
             set 
             { 
-                value = _product;
+                _product = value;
             }
         }
 
@@ -26,7 +26,7 @@ namespace ShopModel
             get { return _orders; }
             set 
             { 
-                value = _orders;
+                _orders = value;
             }
         }
 
