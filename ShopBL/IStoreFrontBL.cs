@@ -23,5 +23,12 @@ namespace ShopBL
         /// <param name="p_storeID"></param>
         /// <returns> Returns a list collection of order objects. </returns>
         List<Product> GetProductbyStoreID(int p_storeID);
+
+        /// <summary>
+        /// Will allow store inventory to be replenished.
+        /// </summary>
+        /// <param name="p_productID"></param>
+        /// <param name="p_Quantity"></param>
+        void ReplenishInventory(int p_productID, int p_Quantity);
     }
 }

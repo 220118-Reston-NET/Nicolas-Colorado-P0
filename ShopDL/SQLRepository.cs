@@ -41,7 +41,8 @@ namespace ShopDL
 
             string sqlQuery = @"select o.orderID, o.storeID, o.StoreFrontLocation, o.TotalPrice from Customer c 
                             inner join ViewOrder vo on c.customerID = vo.customerID 
-                            inner join Orders o on o.orderID = vo.orderID";
+                            inner join Orders o on o.orderID = vo.orderID
+                            where c.customerID = @customerID";
                             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -105,7 +106,8 @@ namespace ShopDL
 
             string sqlQuery = @"select o.orderID, o.customerID, o.StoreFrontLocation, o.TotalPrice from StoreFront sf 
                             inner join ViewStoreOrder vso on sf.storeID = vso.storeID 
-                            inner join Orders o on o.orderID = vso.orderID";
+                            inner join Orders o on o.orderID = vso.orderID
+                            where sf.storeID = @storedID";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -135,9 +137,10 @@ namespace ShopDL
         {
             List<Product> listofProducts = new List<Product>();
 
-            string sqlQuery = @"select p.productID, p.Name, p.Price, p.Category, p.Quantity from StoreFront sf 
-                            inner join Inventory i on sf.storeID = i.storeID
-                            inner join Product p on p.productID = i.productID";
+            string sqlQuery = @"select p.productID, p.Name, p.Price, p.Category, i.Quantity from Product p
+                            inner join Inventory i on i.productID = p.productID
+                            inner join StoreFront on sf.storeID = i.productID
+                            where sf.storeID = @storeID";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -192,6 +195,43 @@ namespace ShopDL
                 }
             }
             return listofStoreFront;
+        }
+
+        public void ReplenishInventory(int p_productID, int p_Quantity)
+        {
+            List<StoreFront> listofStoreFront = new List<StoreFront>();
+
+            int addQuantity = 0;
+
+            string sqlQuery = @"select i.Quantity from Inventory i
+                            where i.productID = @productID";
+            
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@productID", p_productID);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    addQuantity = reader.GetInt32(0);
+                }
+                addQuantity = addQuantity + p_Quantity;
+            }
+            using (SqlConnection con = new SqlConnection(_connectionStrings))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@Quantity", addQuantity);
+                command.Parameters.AddWithValue("@productID", p_productID);
+
+                command.ExecuteNonQuery();
+            }
+
         }
     }
 }

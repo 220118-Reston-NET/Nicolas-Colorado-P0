@@ -9,7 +9,7 @@ namespace ShopUI
     {
         public void Display()
         {
-            Console.WriteLine("Welcome to Nick's Pawn Shop!\n");
+            Console.WriteLine("Welcome to Colorado's Market!\n");
             Console.WriteLine("Please select from the list of options below:\n");
             Console.WriteLine("========== Customer Menu ==========");
             Console.WriteLine("[1] - Enroll as a new customer");
@@ -48,7 +48,7 @@ namespace ShopUI
                 // case "6":
                 //     return "Replenish";
                 case "8":
-                    Console.WriteLine("Thank you for visiting Nick's Pawn Shop! Have a splendid day!");
+                    Console.WriteLine("Thank you for visiting Colorado's Market! Have a splendid day!");
                     return "Exit";
                 default:
                     Console.WriteLine("You've selected an invalid response.");

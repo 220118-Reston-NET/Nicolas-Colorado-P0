@@ -26,6 +26,15 @@ create table Product
 	Quantity int
 )
 
+insert Product (Name, Price, Category, Quantity)
+values ('Men''s Goldlink Chain', 290.00, 'Jewelery', 10),
+	   ('Rogue RA-090 Dreadnought Acoustic Guitar', 89.99, 'Electronics and Musical Instruments', 4),
+	   ('Mitchell MS450 Modern Single-Cutaway Electric Guitar', 399.99, 'Electronics and Musical Instruments', 4),
+	   ('Pokemon: Trading Card Game Rayquaza or Noivern V Battle Deck', 14.99,  'Toys and Games', 20),
+	   ('Sony PlayStation 3 500 GB System', 217.99, 'Toys and Games', 5),
+	   (6, )
+
+
 alter table Product 
 add Quantity int
 
@@ -36,6 +45,12 @@ create table StoreFront
 	Address varchar(50),
 	Phone varchar(50)
 )
+
+--Tables with identity keys don't need to include the ID when inserting values.
+insert StoreFront (Name, Address, Phone)
+values ('Colorado''s Market', '421 Cone Spiral Boulevard, Orlando, FL', '407-123-4567')     
+            
+alter table 
 
 
 --Begin the inner join process to create relationships (One-to-many relationship)
@@ -77,11 +92,15 @@ create table Inventory
 )
 
 alter table Inventory 
-drop column Quantity
+add Quantity int
 
-select p.productID, p.Name, p.Price, p.Category, p.Quantity from StoreFront sf 
+select p.productID, p.Name, p.Price, p.Category, i.Quantity from StoreFront sf 
 inner join Inventory i on sf.storeID = i.storeID
 inner join Product p on p.productID = i.productID
+
+select p.productID, p.Name, p.Price, p.Category, i.Quantity from Product p
+inner join Inventory i on i.productID = p.productID
+inner join StoreFront on sf.storeID = i.productID
 
 
 --Now, it's time to create tables and SQL statements to enable the View Order and View Inventory functionalities.

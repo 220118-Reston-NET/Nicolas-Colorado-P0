@@ -29,5 +29,11 @@ namespace ShopBL
         {
             return _repo.GetAllStoreFront();
         }
+
+        public void ReplenishInventory(int p_productID, int p_Quantity)
+        {
+            _repo.ReplenishInventory(p_productID, p_Quantity);
+        }
+
     }
 }
