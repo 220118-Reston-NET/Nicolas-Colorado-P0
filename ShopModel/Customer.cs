@@ -24,7 +24,7 @@
                 }
                 else 
                 {
-                    throw new Exception("Customer's phone number cannot have more than 10 digits!");
+                    throw new Exception("Customer's phone number cannot have more or less than 10 digits!");
                 }
             } 
         }
@@ -43,7 +43,7 @@
             Name = "";
             Address = "";
             Email = "";
-            _phone = "";
+            _phone = "          ";
             _orders = new List<Orders>()
             {
                 new Orders()

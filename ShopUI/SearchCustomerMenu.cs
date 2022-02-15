@@ -47,7 +47,7 @@ namespace ShopUI
                     }
                     catch (System.Exception)
                     {
-                        Console.WriteLine("Customer information could not be found.");
+                        Console.WriteLine("Customer name could not be found.");
                         Console.WriteLine("Please press the Enter key to try again.");
                         Console.ReadLine();
                         return "SearchCustomerMenu";

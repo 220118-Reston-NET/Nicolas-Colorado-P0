@@ -34,5 +34,12 @@ namespace ShopBL
         /// <returns> Returns a list collection of order objects. </returns>
         List<Orders> GetOrderbyCustomerID(int p_customerID);
 
+        /// <summary>
+        /// Gets back a customer from a customer ID input.
+        /// </summary>
+        /// <param name="p_customerID"></param>
+        /// <returns> Returns customer that was added. </returns>
+        List<Customer> GetCustomerbyCustomerID(int p_customerID);
+
     }
 }

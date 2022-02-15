@@ -20,6 +20,13 @@ namespace ShopDL
         List<Customer> GetAllCustomer();
 
         /// <summary>
+        /// Gets back a customer from a customer ID input.
+        /// </summary>
+        /// <param name="p_customerID"></param>
+        /// <returns> Returns customer that was added. </returns>
+        List<Customer> GetCustomerbyCustomerID(int p_customerID);
+
+        /// <summary>
         /// Will give back a list of orders by customer (There's only one currently).
         /// </summary>
         /// <param name="p_customerID"></param>
@@ -46,6 +53,12 @@ namespace ShopDL
         /// <returns> Returns a list collection of order objects. </returns>
         List<Product> GetProductbyStoreID(int p_storeID);
 
+        /// <summary>   
+        /// Will give back a list of all products.
+        /// </summary>
+        /// <returns> Returns a list collection of products. </returns>
+        List<Product> GetAllProducts();
+
         /// <summary>
         /// Will allow store inventory to be replenished.
         /// </summary>
@@ -53,6 +66,16 @@ namespace ShopDL
         /// <param name="p_Quantity"></param>
         /// <returns> Product ID and the updated product quantity. </returns>
         void ReplenishInventory(int p_productID, int p_Quantity);
+
+        /// <summary>
+        /// Will allow customers to place orders.
+        /// </summary>
+        /// <param name="p_customerID"></param>
+        /// <param name="p_storeID"></param>
+        /// /// <param name="p_priceTotal"></param>
+        /// /// <param name="p_orderedItems"></param>
+        /// <returns> Returns an order, total price, and update to the inventory. </returns>
+        void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems);
 
     }
 }

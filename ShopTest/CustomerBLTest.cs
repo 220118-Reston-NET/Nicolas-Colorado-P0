@@ -10,7 +10,7 @@ namespace ShopTest
     public class CustomerBLTest
     {
         [Fact]
-        public void Should_Get_All_Customer()
+        public void ShouldGetAllCustomer()
         {
             // Arrange
             int ID = 1;

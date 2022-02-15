@@ -57,6 +57,7 @@ namespace ShopUI
                     {
                         Console.WriteLine("You've selected an invalid response.");
                         Console.WriteLine("Press the Enter button to continue.");
+                        Console.ReadLine();
                         return "ViewStoreOrder";  
                     }
                     return "ViewStoreOrder";

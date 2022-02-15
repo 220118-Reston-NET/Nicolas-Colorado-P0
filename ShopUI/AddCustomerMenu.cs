@@ -20,13 +20,12 @@ namespace ShopUI
         public void Display() 
         {
             Console.WriteLine("Please select the type of Customer information you would like to add:\n");
-            Console.WriteLine("[1] - Name: " + _newCustomer.Name);
-            Console.WriteLine("[2] - Address: " + _newCustomer.Address);
-            Console.WriteLine("[3] - Email: " + _newCustomer.Email);
-            Console.WriteLine("[4] - Phone: " + _newCustomer.Phone);
+            Console.WriteLine("[1] - Name: " + _newCustomer.Name); 
+            Console.WriteLine("[2] - Address: " + _newCustomer.Address); 
+            Console.WriteLine("[3] - Email: " + _newCustomer.Email); 
+            Console.WriteLine("[4] - Phone: " + _newCustomer.Phone);  
             Console.WriteLine("[5] - Save Information");
             Console.WriteLine("[6] - Return to Main Menu\n");
-
         }
 
         public string UserChoice()

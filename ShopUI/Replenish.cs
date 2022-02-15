@@ -3,7 +3,7 @@ using ShopModel;
 
 namespace ShopUI
 {
-    public class Replenish
+    public class Replenish : IMenu
     {
         private List<StoreFront> _listofStoreFront;
 

@@ -27,6 +27,11 @@ namespace ShopBL
             return _repo.GetOrderbyCustomerID(p_customerID);
         }
 
+        public List<Customer> GetCustomerbyCustomerID(int p_customerID)
+        {
+            return _repo.GetCustomerbyCustomerID(p_customerID);
+        }
+
 
         public List<Customer> GetAllCustomer()
         {

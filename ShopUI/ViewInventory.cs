@@ -54,10 +54,11 @@ namespace ShopUI
                     
                         return "MainMenu"; 
                     }
-                    catch (FormatException)
+                    catch (System.Exception)
                     {
-                        Console.WriteLine("You've selected an invalid response.");
-                        Console.WriteLine("Press the Enter button to continue.");
+                        Console.WriteLine("Store information could not be found.");
+                        Console.WriteLine("Press the Enter button to try again.");
+                        Console.ReadLine();
                         return "ViewInventory";  
                     }
                     return "ViewInventory";

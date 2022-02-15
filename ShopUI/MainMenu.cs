@@ -29,7 +29,7 @@ namespace ShopUI
         {
             string userInput = Console.ReadLine();
             
-            //Switch cases are useful if you are doing a bunch of comparisons
+            //Switch cases are useful if you are doing a bunch of comparisons with different cases.
 
             switch (userInput)
             {
@@ -37,18 +37,18 @@ namespace ShopUI
                     return "AddCustomerMenu";
                 case "4":
                     return "SearchCustomerMenu";
-                // case "2":
-                //     return "PlaceOrder"; 
+                case "2":
+                    return "PlaceOrder"; 
                 case "3":
                     return "ViewCustomerOrder";
                 case "5":
                     return "ViewStoreOrder";
                 case "7":
                     return "ViewInventory";
-                // case "6":
-                //     return "Replenish";
+                case "6":
+                    return "Replenish";
                 case "8":
-                    Console.WriteLine("Thank you for visiting Colorado's Market! Have a splendid day!");
+                    Console.WriteLine("Thank you for visiting Colorado's Market! Have a splendid day!\n");
                     return "Exit";
                 default:
                     Console.WriteLine("You've selected an invalid response.");
