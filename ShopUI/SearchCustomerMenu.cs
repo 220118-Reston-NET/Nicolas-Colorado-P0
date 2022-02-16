@@ -31,8 +31,10 @@ namespace ShopUI
             switch (userInput)
             {
                 case "1":
+                    Log.Information("User selected to enter customer name.");
                     Console.WriteLine("Please enter a name:"); //Logic to grab user input
                     string name = Console.ReadLine();
+                    Log.Information("User has entered a name.");
                     try
                     {
                         List<Customer> listofCustomer = _customerBL.SearchCustomer("1", name); //logic to display result
@@ -41,20 +43,25 @@ namespace ShopUI
                             Console.WriteLine("--------------------");
                             Console.WriteLine(item);
                         }
+                        Log.Information("Successfully retrieved and displayed customer information.");
                         Console.WriteLine("Press the Enter key to continue.");
                         Console.ReadLine();
-                        return "SearchCustomerMenu";
+                        Log.Information("User pressed the Enter key to continue:");
                     }
                     catch (System.Exception)
                     {
+                        Log.Warning("User's inputed name could not be found.");
                         Console.WriteLine("Customer name could not be found.");
-                        Console.WriteLine("Please press the Enter key to try again.");
+                        Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
-                        return "SearchCustomerMenu";
+                        Log.Information("User pressed the Enter key to try again.");
                     }
+                    return "SearchCustomerMenu";
                 case "2":
+                    Log.Information("User selected to enter customer email.");
                     Console.WriteLine("Please enter an email:"); 
                     string email = Console.ReadLine();
+                    Log.Information("User entered in an email.");
                     try
                     {
                         List<Customer> listofCustomer = _customerBL.SearchCustomer("2", email);
@@ -63,20 +70,25 @@ namespace ShopUI
                             Console.WriteLine("--------------------");
                             Console.WriteLine(item);
                         }
-                        Console.WriteLine("Press the Enter key to continue.");
+                        Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("Press the Enter key to continue:");
                         Console.ReadLine();
-                        return "SearchCustomerMenu";
+                        Log.Information("User pressed the Enter key to continue.");
                     }
                     catch (System.Exception)
                     {
-                        Console.WriteLine("Customer information could not be found.");
-                        Console.WriteLine("Please press the Enter key to try again.");
+                        Log.Warning("User's inputed email could not be found.");
+                        Console.WriteLine("Customer email could not be found.");
+                        Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
-                        return "SearchCustomerMenu";
+                        Log.Information("User pressed the Enter key to try again.");
                     }
+                    return "SearchCustomerMenu";
                 case "3":
+                    Log.Information("User selected to enter customer phone number.");
                     Console.WriteLine("Please enter phone number (must be 10 digits):"); 
                     string phone = Console.ReadLine();
+                    Log.Information("User entered in a phone number.");
                     try
                     {
                         List<Customer> listofCustomer = _customerBL.SearchCustomer("3", phone);
@@ -85,23 +97,29 @@ namespace ShopUI
                             Console.WriteLine("--------------------");
                             Console.WriteLine(item);
                         }
-                        Console.WriteLine("Press the Enter key to continue.");
+                        Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("Press the Enter key to continue:");
                         Console.ReadLine();
-                        return "SearchCustomerMenu";
+                        Log.Information("User pressed the Enter key to continue.");
                     }
                     catch (System.Exception)
                     {
-                        Console.WriteLine("Customer information could not be found.");
-                        Console.WriteLine("Please press the Enter key to try again.");
+                        Log.Warning("User's inputed phone number could not be found.");
+                        Console.WriteLine("Customer phone number could not be found.");
+                        Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
-                        return "SearchCustomerMenu";
+                        Log.Information("User pressed the Enter key to try again.");
                     }
+                    return "SearchCustomerMenu";
                 case "4":
+                    Log.Information("User has selected to return to the main menu.");
                     return "MainMenu";
                 default:
+                    Log.Warning("User selected an invalid response.");
                     Console.WriteLine("You've selected an invalid reponse.");
-                    Console.WriteLine("Please press the Enter key to try again.");
+                    Console.WriteLine("Please press the Enter key to try again:");
                     Console.ReadLine();
+                    Log.Information("User has pressed the Enter Key to try again.");
                     return "SearchCustomerMenu";
             }
         }

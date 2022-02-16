@@ -1,23 +1,21 @@
 namespace ShopUI
 {
     /* 
-        Interface are one of the best ways to implement abstraction
-        Every method is implicitly abstract, meaning you don't have
-        to write anything. Every method is public.
+        Interface that implements abstraction.
+        Every method is implicitly abstract and public.
     */
     public interface IMenu
     {
         /// <summary>
-        /// Will dsiplay the menu and user choices in the terminal
+        /// Will dsiplay the menu and user choices in the terminal.
         /// </summary>
         void Display(); //implicitly public
 
 
         /// <summary>
-        /// Will record the user choice and change/route youy menu based on your choice
-        /// 
+        /// Will record the user choice and change/route your menu based on your choice.
         /// </summary>
-        /// <returns>Return the menu that will change your screen</returns>
+        /// <returns>Return the menu that will change your screen.</returns>
         string UserChoice();
     }
 

@@ -35,23 +35,31 @@ namespace ShopUI
             switch (userInput)
             {
                 case "1":
+                    Log.Information("User selected to add customer name.");
                     Console.WriteLine("Please enter a name:");
                     _newCustomer.Name = Console.ReadLine(); 
+                    Log.Information("User has entered in a name.");
                     return "AddCustomerMenu";
                 case "2":
+                    Log.Information("User selected to add customer address.");
                     Console.WriteLine("Please enter an address:");
                     _newCustomer.Address = Console.ReadLine();
+                    Log.Information("User has entered in an address.");
                     return "AddCustomerMenu";
                 case "3":
+                    Log.Information("User selected to add customer email.");
                     Console.WriteLine("Please enter an email:");
                     _newCustomer.Email = Console.ReadLine();
+                    Log.Information("User has entered in an email.");
                     return "AddCustomerMenu";
                 case "4":
+                    Log.Information("User selected to add customer phone number.");
                     Console.WriteLine("Please enter a phone number:");
                     _newCustomer.Phone = Console.ReadLine();
+                    Log.Information("User has entered in a phone number.");
                     return "AddCustomerMenu";
                 case "5":
-                    //Exception handling with logging to have better user experience
+                    //Exception handling with logging to have better user experience.
                     try
                     {
                         Log.Information("Adding customer information \n" + _newCustomer);
@@ -62,16 +70,20 @@ namespace ShopUI
                     {
                         Log.Warning("Failed to add customer information.");
                         Console.WriteLine(exc.Message);
-                        Console.WriteLine("Please press Enter to continue");
+                        Console.WriteLine("Please press Enter to continue:");
                         Console.ReadLine();
+                        Log.Information("User pressed the Enter key to continue.");
                     }
                     return "MainMenu";
                 case "6":
+                    Log.Information("User has selected to return to the main menu.");
                     return "MainMenu";
-                default:                  
+                default:      
+                    Log.Warning("User selected an invalid response.");            
                     Console.WriteLine("You've selected an invalid response.");
-                    Console.WriteLine("Press the Enter key to continue.\n");
+                    Console.WriteLine("Press the Enter key to continue:");
                     Console.ReadLine();
+                    Log.Information("User has pressed the Enter Key to try again.");
                     return "AddCustomerMenu";
             }
         }

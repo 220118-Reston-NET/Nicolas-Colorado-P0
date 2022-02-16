@@ -67,9 +67,11 @@ while (repeat)
             repeat = false;
             break;
         default:
+            Log.Warning("User selected an invalid response.");
             Console.WriteLine("Page does not exist!");
             Console.WriteLine("Please press the Enter button to continue");
             Console.ReadLine();
+            Log.Information("User will restart the main menu and try again.");
             break;
     }
 }

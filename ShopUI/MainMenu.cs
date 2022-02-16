@@ -3,7 +3,7 @@ namespace ShopUI
     /*
         MainMenu inherits IMenu interface but since it is a class 
         it needs to give actual implementation details to the methods
-        stated inside of the interface
+        stated inside of the interface.
     */
     public class MainMenu : IMenu
     {
@@ -30,6 +30,7 @@ namespace ShopUI
             string userInput = Console.ReadLine();
             
             //Switch cases are useful if you are doing a bunch of comparisons with different cases.
+            //The main menu connects with the IMenu interface.
 
             switch (userInput)
             {

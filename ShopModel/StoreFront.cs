@@ -33,7 +33,7 @@ namespace ShopModel
         public StoreFront()
         {
             Name = "Nick's Pawn Shop";
-            Address = " 5470 Las Vegas Boulevard, Las Vegas, NV";
+            Address = "5470 Las Vegas Boulevard, Las Vegas, NV";
             Phone = "429-009-PAWN";
             _product = new List<Product>()
             {
