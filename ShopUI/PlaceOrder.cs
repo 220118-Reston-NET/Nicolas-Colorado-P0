@@ -11,10 +11,12 @@ namespace ShopUI
         //Dependency Injection
         private ICustomerBL _customerBL;
         private IStoreFrontBL _storeBL;
-        public PlaceOrder(ICustomerBL p_customerBL, IStoreFrontBL p_storeBL)
+        private IOrderBL _orderBL;
+        public PlaceOrder(ICustomerBL p_customerBL, IStoreFrontBL p_storeBL, IOrderBL p_orderBL)
         {
             _customerBL = p_customerBL;
             _storeBL = p_storeBL;
+            _orderBL = p_orderBL;
             _listofCustomer = _customerBL.GetAllCustomer();
             _listofStoreFront = _storeBL.GetAllStoreFront();
         }
@@ -22,18 +24,18 @@ namespace ShopUI
         private static List<Product> listOfProducts = new List<Product>();
         public static int _customerID;
         public static int _storeID;
-        public static int prodID;
-        public static int qty;
+        public static int _prodID;
+        public static int _qty;
 
 
         public void Display()
         {
             //The menu that allows user to place on order.
-            Console.WriteLine("Welcome to the Colorado's Market Order Menu. To begin your order, you must enter your customer ID on file");
+            Console.WriteLine("Welcome to the Colorado's Market Order Menu. To begin your order, you must enter your customer email from the list below");
             Console.WriteLine("as well as the ID of the store you want to purchase from.\n");
             Console.WriteLine("What would you like to do?\n");
             Console.WriteLine("[1] - Place an order");
-            Console.WriteLine("[2] - Return to the Main Menu");
+            Console.WriteLine("[2] - Return to the Main Menu\n");
         }
 
         public string UserChoice()
@@ -45,27 +47,49 @@ namespace ShopUI
                 case "1":
                     //Displays customers in the database.
                     Log.Information("User selected to place an order.");
-                    Console.WriteLine("=============== Customer List ===============");
-                    foreach (var item in _listofCustomer)
-                    {
-                        Console.WriteLine("-------------------------");
-                        Console.WriteLine(item);
-                    }
-                    Console.WriteLine("Please enter a customer ID:");
+                    Console.WriteLine("First, please enter an email:"); 
+                    string email = Console.ReadLine();
+                    Log.Information("User entered in an email.");
+
                     try
                     {
-                        //Get the customer ID from the user.
-                        _customerID = Convert.ToInt32(Console.ReadLine());
-                        Log.Information("User has entered a customer ID.");
-                        if ((_listofCustomer.All(p => p.customerID != _customerID)))
+                        List<Customer> listofCustomer = _customerBL.SearchCustomer("2", email);
+                        foreach (var item in listofCustomer)
                         {
-                            throw new Exception("Customer ID cannot be found.");
+                            _customerID = item.customerID;
+                            Console.WriteLine("-------------------------");
+                            Console.WriteLine(item);
+                            Console.WriteLine("-------------------------");
                         }
+                        Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Your customer information is displayed above. Press the Enter key to continue to the Store List:");
+                        Console.ReadLine();
+                        Log.Information("User pressed the Enter key to continue:");
                     }
+                    // Console.WriteLine("=============== Customer List ===============");
+                    // foreach (var item in _listofCustomer)
+                    // {
+                    //     Console.WriteLine(item.customerID);
+                    //     Console.WriteLine(item.Name);
+                    //     Console.WriteLine("-------------------------");
+                    // }
+                    // Console.WriteLine("");
+                    // Console.WriteLine("Please enter a customer ID:");
+                    // try
+                    // {
+                    //     //Get the customer ID from the user.
+                    //     _customerID = Convert.ToInt32(Console.ReadLine());
+                    //     Log.Information("User has entered a customer ID.");
+                    //     if ((_listofCustomer.All(p => p.customerID != _customerID)))
+                    //     {
+                    //         throw new Exception("Customer ID cannot be found.");
+                    //     }
+                    // }
                     catch (System.Exception)
                     {
-                        Log.Warning("Customer ID could not be found in database.");
-                        Console.Write("You've selected an invalid value.");
+                        Log.Warning("Customer email could not be found in database.");
+                        Console.Write("Customer email could not be found. Make sure you are spelling correctly.");
                         Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to try again.");
@@ -75,9 +99,10 @@ namespace ShopUI
                     Console.WriteLine("=============== Store List ===============");
                     foreach (var item in _listofStoreFront)
                     {
-                        Console.WriteLine("-------------------------");
                         Console.WriteLine(item);
+                        Console.WriteLine("-------------------------");
                     }
+                    Console.WriteLine("");
                     Console.WriteLine("Please enter the store's ID:");
                     try
                     {
@@ -105,8 +130,8 @@ namespace ShopUI
                         Console.WriteLine("=============== Inventory ===============");
                         foreach (var product in listofProducts)
                         {
-                            Console.WriteLine("-------------------------");
-                            Console.WriteLine(product);                        
+                            Console.WriteLine(product);    
+                            Console.WriteLine("-------------------------");                    
                         }
                         Log.Information("Successfully retrieved and displayed current inventory in a store.");
                     }
@@ -123,10 +148,11 @@ namespace ShopUI
                     while (shoploop)
                     {
                         //The order menu is stored in a while-loop to allow users to add products to their order repeatedly before checking out.
-                        Console.WriteLine("To add product to your order, you must enter the product's ID. What would you like to do next?");
+                        Console.WriteLine("To add product to your order, you must enter the product's ID from the inventory list.");
+                        Console.WriteLine("What would you like to do next?\n");
                         Console.WriteLine("[1] - Add a product to an order");
                         Console.WriteLine("[2] - Check out");
-                        Console.WriteLine("[3] - Cancel my order");
+                        Console.WriteLine("[3] - Cancel my order\n");
                         string orderchoice = Console.ReadLine();
 
                         if (orderchoice == "1")
@@ -136,18 +162,18 @@ namespace ShopUI
                             //Products' information  (ID and quantity) are specified by the user to add to the order.
                             try
                             {
-                                Console.WriteLine("Please enter product ID:");
-                                prodID = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Please enter the product ID:");
+                                _prodID = Convert.ToInt32(Console.ReadLine());
                                 Log.Information("User has entered a product ID.");
 
                                 Console.WriteLine("Now, enter the amount of the product you wish to order:");
-                                qty = Convert.ToInt32(Console.ReadLine());
+                                _qty = Convert.ToInt32(Console.ReadLine());
                                 Log.Information("User has entered a product qty.");
 
                                 orderedItems.Add(new LineItem()
                                 {
-                                    productID = prodID,
-                                    Quantity = qty
+                                    productID = _prodID,
+                                    Quantity = _qty
                                 });
                             }
                             catch (FormatException)
@@ -164,7 +190,7 @@ namespace ShopUI
                             try
                             {
                                 int inventory = 0;
-                                int orderItemQty = qty;
+                                int orderItemQty = _qty;
                                 List<Product> listofProducts = _storeBL.GetProductbyStoreID(_storeID);
                                 foreach (var item in listofProducts)
                                 {
@@ -173,6 +199,7 @@ namespace ShopUI
 
                                 if (orderItemQty <= inventory)
                                 {
+                                    Console.WriteLine("\n\n");
                                     Console.WriteLine("Product(s) has been added to your order!\n");
                                     Console.WriteLine("Press the enter key to continue:");
                                     Console.ReadLine();
@@ -199,7 +226,7 @@ namespace ShopUI
                             //Break the order menu loop to finally check out with the products.
                             shoploop = false;
                             double priceTotal = 0;
-                            Console.WriteLine("Order has been checked out!\n");
+                            Console.WriteLine("Order has been checked out!");
 
                             Product _product = new Product();
                             foreach (var items in orderedItems)
@@ -207,25 +234,25 @@ namespace ShopUI
                                 //Create a list storing order items into an updated list.
                                 //Using the variable stored above, Total Price can be created from the ordered products.
                                 //Total Price is now being stored in the database.
-                                _product = _storeBL.GetAllProducts().Find(p => p.productID == items.productID);
-                                priceTotal += _product.Price * _product.Quantity;
+                                _product = _storeBL.GetProductbyStoreID(_storeID).Find(p => p.productID == items.productID);
+                                priceTotal += _product.Price * items.Quantity;
                             }
                             //Total price expressed with two decimal places.
                             priceTotal = Math.Round(priceTotal, 2);
-                            Console.WriteLine("");
                             Console.WriteLine("Total Price: $" + priceTotal);
 
                             //One last menu to finalize the order, or cancel it.
-                            Console.WriteLine("Please choose if you wish to submit the order or cancel it.");
+                            Console.WriteLine("");
+                            Console.WriteLine("Please choose if you wish to submit the order or cancel it.\n");
                             Console.WriteLine("[1] - Submit the order");
-                            Console.WriteLine("[2] - Cancel the order");
+                            Console.WriteLine("[2] - Cancel the order\n");
                             string submitChoice = Console.ReadLine();
                             if (submitChoice == "1")
                             {
                                 Log.Information("User selected to submit an order.");
                                 //Adds new order to the database using the StoreFront BL.
                                 //Inventory updated with subtracted quantity of products in SQL Repository.
-                                _storeBL.PlaceNewOrder(_customerID, _storeID, priceTotal, orderedItems);
+                                _orderBL.PlaceNewOrder(_customerID, _storeID, priceTotal, orderedItems);
                                 
                                 Console.WriteLine("Thank you for your order!");
                                 Console.WriteLine("Please press the Enter key to continue:");
@@ -237,7 +264,7 @@ namespace ShopUI
                                 Log.Information("User selected to cancel an order.");
 
                                 //Last chance to cancel the order.
-                                Console.WriteLine("Cancelling order. Press the enter key to return to the Order Menu:");
+                                Console.WriteLine("Order has been cancelled. Press the enter key to return to the Order Menu:");
                                 Console.ReadLine();
                                 Log.Information("User pressed the Enter key to return to the PlaceOrder menu.");
                                 shoploop = false;
@@ -257,7 +284,7 @@ namespace ShopUI
                             Log.Information("User selected to cancel an order.");
                             
                             //First chance to cancel the order
-                            Console.WriteLine("Cancelling order. Press the enter key to return to the Order Menu:");
+                            Console.WriteLine("Order has been cancelled. Press the enter key to return to the Order Menu:");
                             Console.ReadLine();
                             Log.Information("User pressed the Enter key to try again.");
                             shoploop = false;

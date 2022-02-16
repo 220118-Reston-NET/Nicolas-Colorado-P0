@@ -12,40 +12,62 @@ create table Customer
 create table Orders
 (
 	orderID int identity(1,1) primary key,
-	StoreFrontLocation varchar(50),
 	TotalPrice float
 )
+
+drop table Orders 
 
 create table Product
 (
 	productID int identity(1,1) primary key,
 	Name varchar(50),
 	Price float,
-	Category varchar(50),
-	Quantity int
+	Category varchar(50)
 )
 
-insert Product (Name, Price, Category, Quantity)
-values ('Men''s Goldlink Chain', 290.00, 'Jewelery', 10),
-	   ('Elsa PerettiDiamond Bracelet', 575.00, 'Jewelry', 3),
-	   ('Sterling Silver Mood Ring', 32.95, 'Jewelry', 40),
-	   ('Rogue RA-090 Dreadnought Acoustic Guitar', 89.99, 'Electronics and Musical Instruments', 4),
-	   ('Mitchell MS450 Single-Cutaway Electric Guitar', 399.99, 'Electronics and Musical Instruments', 4),
-	   ('Insignia CD Boombox', 39.99, 'Electronics and Musical Instruments', 12),
-	   ('Samsung USB-C Data Charging Cable', 6.99, 'Electronics and Musical Instruments', 30),
-	   ('Pokemon: Trading Card Game Rayquaza Battle Deck', 14.99,  'Toys and Games', 20),
-	   ('Sony PlayStation 3 500 GB System', 217.99, 'Toys and Games', 5),
-	   ('Nerf Rival Hypnos XIX-1200', 52.99, 'Toys and Games', 6),
-	   ('Belgian Chocolate Cake', 24.99, 'Produce and Baked Goods', 5),
-	   ('Golden Apple', 1.50, 'Produce and Baked Goods', 50),
-	   ('Chiquita Bananas 2-lb', 4.39, 'Produce and Baked Goods', 25),
-	   ('Krispy Kreme Original Glazed Dozen Box', 7.99, 'Produce and Baked Goods', 9),
-	   ('Women''s Floral Dress', 39.99, 'Clothing', 10),
-	   ('Men''s Cotton Sweatpants', 27.96, 'Clothing', 8),
-	   ('Children''s One-Piece Pajama Set', 18.50, 'Clothing', 11),
-	   ('Everlast MMA Gloves', 34.99, 'Sports Equipment', 2),
-	   ('Adidas MLS Club Soccer Ball', 19.99, 'Sports Equipment', 7),
-	   ('CAP Barbell Neoprene 16-lb Dumbbell', 16.99, 'Sports Equipment', 14)
+insert Product (Name, Price, Category)
+values ('Men''s Goldlink Chain', 290.00, 'Jewelery'),
+	   ('Elsa PerettiDiamond Bracelet', 575.00, 'Jewelry'),
+	   ('Sterling Silver Mood Ring', 32.95, 'Jewelry'),
+	   ('Rogue RA-090 Dreadnought Acoustic Guitar', 89.99, 'Electronics and Musical Instruments'),
+	   ('Mitchell MS450 Single-Cutaway Electric Guitar', 399.99, 'Electronics and Musical Instruments'),
+	   ('Insignia CD Boombox', 39.99, 'Electronics and Musical Instruments'),
+	   ('Samsung USB-C Data Charging Cable', 6.99, 'Electronics and Musical Instruments'),
+	   ('Pokemon: Trading Card Game Rayquaza Battle Deck', 14.99,  'Toys and Games'),
+	   ('Sony PlayStation 3 500 GB System', 217.99, 'Toys and Games'),
+	   ('Nerf Rival Hypnos XIX-1200', 52.99, 'Toys and Games'),
+	   ('Belgian Chocolate Cake', 24.99, 'Produce and Baked Goods'),
+	   ('Golden Apple', 1.50, 'Produce and Baked Goods'),
+	   ('Chiquita Bananas 2-lb', 4.39, 'Produce and Baked Goods'),
+	   ('Krispy Kreme Original Glazed Dozen Box', 7.99, 'Produce and Baked Goods'),
+	   ('Women''s Floral Dress', 39.99, 'Clothing'),
+	   ('Men''s Cotton Sweatpants', 27.96, 'Clothing'),
+	   ('Children''s One-Piece Pajama Set', 18.50, 'Clothing'),
+	   ('Everlast MMA Gloves', 34.99, 'Sports Equipment'),
+	   ('Adidas MLS Club Soccer Ball', 19.99, 'Sports Equipment'),
+	   ('CAP Barbell Neoprene 16-lb Dumbbell', 16.99, 'Sports Equipment')
+	   
+insert into Inventory  
+values (1,1,10),
+	   (1,2,3),
+	   (1,3,40),
+	   (1,4,4),
+	   (1,5,4),
+	   (1,6,12),
+	   (1,7,30),
+	   (1,8,20),
+	   (1,9,5),
+	   (1,10,6),
+	   (1,11,5),
+	   (1,12,50),
+	   (1,13,25),
+	   (1,14,9),
+	   (1,15,10),
+	   (1,16,8),
+	   (1,17,11),
+	   (1,18,2),
+	   (1,19,7),
+	   (1,20,14)
 	   
 	   
 create table StoreFront 
@@ -81,10 +103,12 @@ inner join Orders o on sf.storeID = o.storeID
 
 ---Error fixing after adding Products
 drop table LineItems 
+drop table ViewOrder 
+drop table ViewStoreOrder 
 
-drop table Inventory 
+--drop table Inventory 
 
-drop table Product 
+--drop table Product 
 
 
 
@@ -108,7 +132,7 @@ inner join Product p on p.productID = li.productID
 --Storefront + Products = Inventory
 create table Inventory 
 (
-	storeID int foreign key references Storefront(storeID),
+	storeID int foreign key references StoreFront(storeID),
 	productID int foreign key references Product(productID),
 	Quantity int
 )
@@ -135,6 +159,7 @@ create table ViewOrder
 	customerID int foreign key references Customer(customerID),
 	orderID int foreign key references Orders(orderID)
 )
+
 
 select o.orderID, o.storeID, o.StoreFrontLocation, o.TotalPrice from Customer c 
 inner join ViewOrder vo on c.customerID = vo.customerID 

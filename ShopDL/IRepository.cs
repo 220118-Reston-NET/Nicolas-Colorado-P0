@@ -53,19 +53,20 @@ namespace ShopDL
         /// <returns> Returns a list collection of order objects. </returns>
         List<Product> GetProductbyStoreID(int p_storeID);
 
-        /// <summary>   
-        /// Will give back a list of all products.
-        /// </summary>
-        /// <returns> Returns a list collection of products. </returns>
-        List<Product> GetAllProducts();
+        // /// <summary>   
+        // /// Will give back a list of all products.
+        // /// </summary>
+        // /// <returns> Returns a list collection of products. </returns>
+        // List<Product> GetAllProducts();
 
         /// <summary>
         /// Will allow store inventory to be replenished.
         /// </summary>
         /// <param name="p_productID"></param>
         /// <param name="p_Quantity"></param>
+        /// <param name="p_storeID"></param>
         /// <returns> Product ID and the updated product quantity. </returns>
-        void ReplenishInventory(int p_productID, int p_Quantity);
+        void ReplenishInventory(int p_productID, int p_Quantity, int p_storeID);
 
         /// <summary>
         /// Will allow customers to place orders.
@@ -75,7 +76,7 @@ namespace ShopDL
         /// /// <param name="p_priceTotal"></param>
         /// /// <param name="p_orderedItems"></param>
         /// <returns> Returns an order, total price, and update to the inventory. </returns>
-        void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems);
+        Orders PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems);
 
     }
 }

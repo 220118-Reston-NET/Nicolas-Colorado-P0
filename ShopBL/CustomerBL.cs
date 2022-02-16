@@ -45,20 +45,43 @@ namespace ShopBL
 
             switch (c_search)
             {
+                //Use the LINQ library to validate the SearchCustomer function
                 case "1":
-                //validation process using LINQ Library
-                    return listCustomer
-                                .Where(customer => customer.Name.Contains(c_name))
-                                .ToList();
+                    var searchname = listCustomer.Find(c => c.Name.Contains(c_name));
+                    if (searchname != null)
+                    {
+                        return listCustomer
+                                    .Where(customer => customer.Name.Contains(c_name))
+                                    .ToList();
+                    }
+                    else 
+                    {
+                        throw new Exception("This customer name cannot be found.");
+                    }
                 case "2":
-                //LINQ Library
-                    return listCustomer
-                                .Where(customer => customer.Email.Contains(c_name))
-                                .ToList();
+                    var searchemail = listCustomer.Find(c => c.Email == c_name);
+                    if (searchemail != null)
+                    {
+                        return listCustomer
+                                    .Where(customer => customer.Email.Equals(c_name))
+                                    .ToList();
+                    }
+                    else 
+                    {
+                        throw new Exception("This customer email cannot be found.");
+                    }
                 case "3":
-                    return listCustomer
-                                .Where(customer => customer.Phone.Contains(c_name))
-                                .ToList();
+                    var searchphone = listCustomer.Find(c => c.Phone == c_name);
+                    if (searchphone != null)
+                    {
+                        return listCustomer
+                                    .Where(customer => customer.Phone.Equals(c_name))
+                                    .ToList();
+                    }
+                    else 
+                    {
+                        throw new Exception("This customer phone number cannot be found.");
+                    }
                 default:
                     Console.WriteLine("Customer information could not be found. Press the the Enter key to continue.");
                     Console.ReadLine();

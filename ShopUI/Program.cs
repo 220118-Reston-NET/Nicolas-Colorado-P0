@@ -39,7 +39,7 @@ while (repeat)
             break;
         case "PlaceOrder":
             Log.Information("Displaying PlaceOrder menu to user");
-            menu = new PlaceOrder(new CustomerBL(new SQLRepository(_connectionString)), new StoreFrontBL(new SQLRepository(_connectionString)));
+            menu = new PlaceOrder(new CustomerBL(new SQLRepository(_connectionString)), new StoreFrontBL(new SQLRepository(_connectionString)), new OrderBL(new SQLRepository(_connectionString)));
             break;
         case "ViewCustomerOrder":
             Log.Information("Displaying ViewCustomerOrder menu to user");

@@ -15,7 +15,7 @@ namespace ShopModel
 
         public override string ToString()
         {
-            return $"ID: {productID}\nName: {Name}\nPrice: {Price}\nCategory: {Category}";
+            return $"ID: {productID}\nName: {Name}\nPrice: {Price}\nCategory: {Category}\nQuantity: {Quantity}";
         }
     }  
 }

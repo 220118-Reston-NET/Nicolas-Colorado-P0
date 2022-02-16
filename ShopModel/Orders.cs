@@ -19,13 +19,11 @@ namespace ShopModel
             }
         }
 
-        public string StoreFrontLocation { get; set; }
-
         public double TotalPrice { get; set; }
 
         public override string ToString()
         {
-            return $"OrderID: {orderID}\nStoreID: {storeID}\nLocation: {StoreFrontLocation}\nTotal Price: {TotalPrice}";
+            return $"OrderID: {orderID}\nStoreID: {storeID}\nTotal Price: {TotalPrice}";
         }
     }
 }

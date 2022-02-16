@@ -39,7 +39,7 @@ namespace ShopDL
         {
             List<Orders> listofOrders = new List<Orders>();
 
-            string sqlQuery = @"select o.orderID, o.storeID, o.StoreFrontLocation, o.TotalPrice from Customer c 
+            string sqlQuery = @"select o.orderID, o.storeID, o.TotalPrice from Customer c 
                             inner join ViewOrder vo on c.customerID = vo.customerID 
                             inner join Orders o on o.orderID = vo.orderID
                             where c.customerID = @customerID";
@@ -60,8 +60,7 @@ namespace ShopDL
                         //reader column is not based on table structure but on your select query statement is displaying
                         orderID = reader.GetInt32(0),
                         storeID = reader.GetInt32(1),
-                        StoreFrontLocation = reader.GetString(2),
-                        TotalPrice = reader.GetDouble(3)
+                        TotalPrice = reader.GetDouble(2)
                     });
                 }
             }
@@ -137,7 +136,7 @@ namespace ShopDL
         {
             List<Orders> listofOrders = new List<Orders>();
 
-            string sqlQuery = @"select o.orderID, o.customerID, o.StoreFrontLocation, o.TotalPrice from StoreFront sf 
+            string sqlQuery = @"select o.orderID, o.customerID, o.TotalPrice from StoreFront sf 
                             inner join ViewStoreOrder vso on sf.storeID = vso.storeID 
                             inner join Orders o on o.orderID = vso.orderID
                             where sf.storeID = @storedID";
@@ -157,8 +156,7 @@ namespace ShopDL
                     {
                         orderID = reader.GetInt32(0),
                         customerID = reader.GetInt32(1),
-                        StoreFrontLocation = reader.GetString(2),
-                        TotalPrice = reader.GetDouble(3)
+                        TotalPrice = reader.GetDouble(2)
                     });
                 }
             }
@@ -172,7 +170,7 @@ namespace ShopDL
 
             string sqlQuery = @"select p.productID, p.Name, p.Price, p.Category, i.Quantity from Product p
                             inner join Inventory i on i.productID = p.productID
-                            inner join StoreFront on sf.storeID = i.productID
+                            inner join StoreFront sf on sf.storeID = i.storeID
                             where sf.storeID = @storeID";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
@@ -231,20 +229,23 @@ namespace ShopDL
         }
 
 
-        public void ReplenishInventory(int p_productID, int p_Quantity)
+        public void ReplenishInventory(int p_productID, int p_Quantity, int p_storeID)
         {
             List<StoreFront> listofStoreFront = new List<StoreFront>();
 
             int addQty = 0;
 
             string sqlQuery = @"select i.Quantity from Inventory i
-                            where i.productID = @productID";
+                            where i.productID = @productID
+                            and i.storeID = @storeID";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
 
                 SqlCommand command = new SqlCommand(sqlQuery, con);
+                command.Parameters.AddWithValue("@productID", p_productID);
+                command.Parameters.AddWithValue("@storeID", p_storeID);
 
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -254,6 +255,12 @@ namespace ShopDL
                 }
                 addQty = addQty + p_Quantity;
             }
+
+            sqlQuery = @"update Inventory
+                        set Quantity = @Quantity
+                        where productID = @productID
+                        and storeID = @storeID";
+
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
                 con.Open();
@@ -261,23 +268,28 @@ namespace ShopDL
                 SqlCommand command = new SqlCommand(sqlQuery, con);
                 command.Parameters.AddWithValue("@Quantity", addQty);
                 command.Parameters.AddWithValue("@productID", p_productID);
+                command.Parameters.AddWithValue("@storeID", p_storeID);
 
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
+        public Orders PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
         {
+            Orders order = new Orders();
+            //Creates an order, prepares lineitems, and updates the inventory.
             string sqlQuery = @"insert into Orders
-                                values(@customerID, @storeID, @TotalPrice";
+                            values(@customerID, @storeID, @TotalPrice);
+                            SELECT SCOPE_IDENTITY();";
             
-            string sqlQuery2 = @"update Inventory
-                                set Quantity = Quantity - @Quantity
-                                where storeId  = @storeID and productID = @productID";
+            string sqlQuery2 = @"insert into LineItem
+                            values(@orderID, @productID, @Quantity)";
+
+            string sqlQuery3 = @"update Inventory
+                            set Quantity = Quantity - @Quantity
+                            where storeID = @storeID AND productID = @productID";
             
-            string sqlQuery3 = @"insert into LineItem
-                                values(@Quantity, @orderID, @productID)";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -288,52 +300,58 @@ namespace ShopDL
                 command.Parameters.AddWithValue("@storeID", p_storeID);
                 command.Parameters.AddWithValue("@TotalPrice", p_priceTotal);
 
-                command.ExecuteNonQuery();
 
                 int orderID = Convert.ToInt32(command.ExecuteScalar());
+
+                // command.ExecuteNonQuery();
+
                 foreach (var item in p_orderedItems)
                 {
                     SqlCommand command2 = new SqlCommand(sqlQuery2, con);
-                    command2.Parameters.AddWithValue("@Quantity", item.Quantity);
-                    command2.Parameters.AddWithValue("@storeID", p_storeID);
+                    command2.Parameters.AddWithValue("@orderID", orderID);
                     command2.Parameters.AddWithValue("@productID", item.productID);
-
-                    SqlCommand command3 = new SqlCommand(sqlQuery3, con);
-                    command3.Parameters.AddWithValue("@Quantity", item.Quantity);
-                    command3.Parameters.AddWithValue("@orderID", orderID);
-                    command3.Parameters.AddWithValue("@productID", item.productID);
+                    command2.Parameters.AddWithValue("@Quantity", item.Quantity);
 
                     command2.ExecuteNonQuery();
+
+                    SqlCommand command3 = new SqlCommand(sqlQuery3, con);
+                    command3.Parameters.AddWithValue("@storeID", p_storeID);
+                    command3.Parameters.AddWithValue("@productID", item.productID);
+                    command3.Parameters.AddWithValue("@Quantity", item.Quantity);
+
+                    command3.ExecuteNonQuery();
                 }    
             }
+            return order; 
         }
-        public List<Product> GetAllProducts()
-        {
-            List<Product> listofProducts = new List<Product>();
+        
+        // public List<Product> GetAllProducts()
+        // {
+        //     List<Product> listofProducts = new List<Product>();
 
-            string sqlQuery = @"select * from Product";
+        //     string sqlQuery = @"select * from Product";
 
-            using (SqlConnection con = new SqlConnection(_connectionStrings))
-            {
-                con.Open();
+        //     using (SqlConnection con = new SqlConnection(_connectionStrings))
+        //     {
+        //         con.Open();
 
-                SqlCommand command = new SqlCommand(sqlQuery, con);
+        //         SqlCommand command = new SqlCommand(sqlQuery, con);
                 
-                SqlDataReader reader = command.ExecuteReader();
+        //         SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    listofProducts.Add(new Product()
-                    {
-                        productID = reader.GetInt32(0),
-                        Name = reader.GetString(1),
-                        Price = reader.GetDouble(2),
-                        Category = reader.GetString(3),
-                        Quantity = reader.GetInt32(4)
-                    });
-                }
-            }
-            return listofProducts;
-        }
+        //         while (reader.Read())
+        //         {
+        //             listofProducts.Add(new Product()
+        //             {
+        //                 productID = reader.GetInt32(0),
+        //                 Name = reader.GetString(1),
+        //                 Price = reader.GetDouble(2),
+        //                 Category = reader.GetString(3),
+        //                 Quantity = reader.GetInt32(4)
+        //             });
+        //         }
+        //     }
+        //     return listofProducts;
+        // }
     }
 }

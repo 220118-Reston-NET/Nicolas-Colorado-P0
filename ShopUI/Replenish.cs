@@ -15,13 +15,16 @@ namespace ShopUI
             _listofStoreFront = _storeBL.GetAllStoreFront();
         }
 
+        public int _sfID;
+
         public void Display()
         {
             Console.WriteLine("Displayed below is a list of stores currently available for online orders. To replenish a product, select a store's inventory.\n");
+            Console.WriteLine("=============== Store List ===============");
             foreach (var item in _listofStoreFront)
             {
-                Console.WriteLine("====================");
                 Console.WriteLine(item);
+                Console.WriteLine("-------------------------");
             }
             
             //The menu that offers a choice to replenish inventory or not.
@@ -42,9 +45,9 @@ namespace ShopUI
                     try
                     {
                         //Get storeID from the user.
-                        int sfID = Convert.ToInt32(Console.ReadLine());
+                        _sfID = Convert.ToInt32(Console.ReadLine());
                         Log.Information("User has entered a store ID.");
-                        List<Product> listofProducts = _storeBL.GetProductbyStoreID(sfID);
+                        List<Product> listofProducts = _storeBL.GetProductbyStoreID(_sfID);
                         Console.WriteLine("=============== Inventory ===============");
                         foreach (var item in listofProducts)
                         {
@@ -74,7 +77,7 @@ namespace ShopUI
                         Log.Information("User has entered a product quantity.");
 
                         //Repenishes the inventory.
-                        _storeBL.ReplenishInventory(inventoryID, itemQuantity);
+                        _storeBL.ReplenishInventory(inventoryID, itemQuantity, _sfID);
 
                         Console.WriteLine("Product has been successfully replenished. Inventory has been updated");
                         Console.WriteLine("Please press the Enter key to continue:");

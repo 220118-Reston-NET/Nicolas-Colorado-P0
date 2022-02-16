@@ -15,20 +15,22 @@ namespace ShopUI
             _listofCustomer = _customerBL.GetAllCustomer();
         }
 
+        public int _custID;
+
         public void Display()
         {
             //The menu displays a list of customers the user can choose from.
-            Console.WriteLine("Displayed below is a list of customers currently in our database. To view a customer's order history, enter their ID.\n");
+            Console.WriteLine("Displayed below is a list of customers currently in our database. To view a customer's order history, enter their email.\n");
             Console.WriteLine("=============== Customer List ===============");
             foreach (var item in _listofCustomer)
             {
-                Console.WriteLine("====================");
                 Console.WriteLine(item);
+                Console.WriteLine("-------------------------");
             }
             Console.WriteLine("");
             Console.WriteLine("What would you like to do?\n");
             Console.WriteLine("[1] - Select a customer by ID");
-            Console.WriteLine("[2] - Return to Main Menu");
+            Console.WriteLine("[2] - Return to Main Menu\n");
         }
 
         public string UserChoice()
@@ -39,31 +41,52 @@ namespace ShopUI
             {
                 case "1":
                     Log.Information("User selected to view a customer's order history.");
-                    Console.WriteLine("Please enter customer's ID:");
+                    Console.WriteLine("First, please enter an email:"); 
+                    string email = Console.ReadLine();
+                    Log.Information("User entered in an email.");
                     try
                     {
-                        //Gets the customer ID from the user.
-                        int customerID = Convert.ToInt32(Console.ReadLine());
-                        Log.Information("User has entered a customer ID");
+                        List<Customer> listofCustomer = _customerBL.SearchCustomer("2", email);
+                        foreach (var item in listofCustomer)
+                        {
+                            _custID = item.customerID;
+                            Console.WriteLine("-------------------------");
+                            Console.WriteLine(item);
+                            Console.WriteLine("-------------------------");
+                        }
+                        Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Your customer information is displayed above. Press the Enter key to continue to the Order List:");
+                        Console.ReadLine();
+                        Log.Information("User pressed the Enter key to continue:");
+                        // //Gets the customer ID from the user.
+                        // int custID = Convert.ToInt32(Console.ReadLine());
+                        // Log.Information("User has entered a customer ID");
+                        // if ((_listofCustomer.All(p => p.customerID != custID)))
+                        // {
+                        //     throw new Exception("Customer ID cannot be found.");
+                        // }
 
                         //Displays the order history from the customer.
-                        List<Orders> listofOrders = _customerBL.GetOrderbyCustomerID(customerID);
+                        List<Orders> listofOrders = _customerBL.GetOrderbyCustomerID(_custID);
+                        Console.WriteLine("=============== Order History ===============");
                         foreach (var item in listofOrders)
                         {
-                            Console.WriteLine("====================");
                             Console.WriteLine(item);
+                            Console.WriteLine("-------------------------");
                         }
                         Log.Information("Successfully retrieved and displayed list of orders from customer ID.");
+                        Console.WriteLine("");
                         Console.WriteLine("Please press the Enter button to continue");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to continue.");
                     }
-                    catch (FormatException)
+                    catch (System.Exception)
                     {
                         //Displays if user input has an invalid format.
-                        Log.Warning("User inputted a invalid value for customer ID.");
-                        Console.WriteLine("You've selected an invalid response.");
-                        Console.WriteLine("Press the Enter button to continue.");
+                        Log.Warning("Customer email could not be found.");
+                        Console.WriteLine("Customer email could not be found. Make sure you are spelling correctly");
+                        Console.WriteLine("Press the Enter button to try again.");
                         Console.ReadLine();
                         Log.Information("User has pressed the Enter key to try again.");
                     }

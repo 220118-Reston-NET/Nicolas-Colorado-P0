@@ -54,7 +54,7 @@ namespace ShopUI
                     return "AddCustomerMenu";
                 case "4":
                     Log.Information("User selected to add customer phone number.");
-                    Console.WriteLine("Please enter a phone number:");
+                    Console.WriteLine("Please enter a phone number (must be 10 digits with no dashes):");
                     _newCustomer.Phone = Console.ReadLine();
                     Log.Information("User has entered in a phone number.");
                     return "AddCustomerMenu";
@@ -64,6 +64,9 @@ namespace ShopUI
                     {
                         Log.Information("Adding customer information \n" + _newCustomer);
                         _customerBL.AddCustomer(_newCustomer);
+                        Console.WriteLine("Customer information has been added. Welcome to Colorado's Market!");
+                        Console.WriteLine("Press the Enter to return to the main menu:");
+                        Console.ReadLine();
                         Log.Information("Successfully added customer's information!");
                     }
                     catch (System.Exception exc)
@@ -81,7 +84,7 @@ namespace ShopUI
                 default:      
                     Log.Warning("User selected an invalid response.");            
                     Console.WriteLine("You've selected an invalid response.");
-                    Console.WriteLine("Press the Enter key to continue:");
+                    Console.WriteLine("Press the Enter key to try again:");
                     Console.ReadLine();
                     Log.Information("User has pressed the Enter Key to try again.");
                     return "AddCustomerMenu";

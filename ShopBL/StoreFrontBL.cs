@@ -25,24 +25,15 @@ namespace ShopBL
             return _repo.GetProductbyStoreID(p_storeID);
         }
 
-        public List<Product> GetAllProducts()
-        {
-            return _repo.GetAllProducts();
-        }
-        
         public List<StoreFront> GetAllStoreFront()
         {
             return _repo.GetAllStoreFront();
         }
 
-        public void ReplenishInventory(int p_productID, int p_Quantity)
+        public void ReplenishInventory(int p_productID, int p_Quantity, int p_storedID)
         {
-            _repo.ReplenishInventory(p_productID, p_Quantity);
+            _repo.ReplenishInventory(p_productID, p_Quantity, p_storedID);
         }
 
-        public void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
-        {
-            _repo.PlaceNewOrder(p_customerID, p_storeID, p_priceTotal, p_orderedItems);
-        }
     }
 }

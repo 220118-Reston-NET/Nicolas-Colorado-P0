@@ -19,9 +19,9 @@ namespace ShopUI
         {
             Console.WriteLine("Please enter the type of Customer information you would like to search for:\n");
             Console.WriteLine("[1] - Customer Name");
-            Console.WriteLine("[2] - Cusutomer Email");
+            Console.WriteLine("[2] - Customer Email");
             Console.WriteLine("[3] - Customer Phone Number");
-            Console.WriteLine("[4] - Return to Main Menu");
+            Console.WriteLine("[4] - Return to Main Menu\n");
         }
 
         public string UserChoice()
@@ -40,10 +40,11 @@ namespace ShopUI
                         List<Customer> listofCustomer = _customerBL.SearchCustomer("1", name); //logic to display result
                         foreach (var item in listofCustomer)
                         {
-                            Console.WriteLine("--------------------");
                             Console.WriteLine(item);
+                            Console.WriteLine("-------------------------");
                         }
                         Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("");
                         Console.WriteLine("Press the Enter key to continue.");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to continue:");
@@ -51,7 +52,7 @@ namespace ShopUI
                     catch (System.Exception)
                     {
                         Log.Warning("User's inputed name could not be found.");
-                        Console.WriteLine("Customer name could not be found.");
+                        Console.WriteLine("Customer name could not be found. Make sure you are spelling correctly.");
                         Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to try again.");
@@ -67,10 +68,12 @@ namespace ShopUI
                         List<Customer> listofCustomer = _customerBL.SearchCustomer("2", email);
                         foreach (var item in listofCustomer)
                         {
-                            Console.WriteLine("--------------------");
+                            Console.WriteLine("-------------------------");
                             Console.WriteLine(item);
+                            Console.WriteLine("-------------------------");
                         }
                         Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("");
                         Console.WriteLine("Press the Enter key to continue:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to continue.");
@@ -78,7 +81,7 @@ namespace ShopUI
                     catch (System.Exception)
                     {
                         Log.Warning("User's inputed email could not be found.");
-                        Console.WriteLine("Customer email could not be found.");
+                        Console.WriteLine("Customer email could not be found. Make sure you are spelling correctly.");
                         Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to try again.");
@@ -86,7 +89,7 @@ namespace ShopUI
                     return "SearchCustomerMenu";
                 case "3":
                     Log.Information("User selected to enter customer phone number.");
-                    Console.WriteLine("Please enter phone number (must be 10 digits):"); 
+                    Console.WriteLine("Please enter phone number (must be 10 digits with no dashes):"); 
                     string phone = Console.ReadLine();
                     Log.Information("User entered in a phone number.");
                     try
@@ -94,10 +97,11 @@ namespace ShopUI
                         List<Customer> listofCustomer = _customerBL.SearchCustomer("3", phone);
                         foreach (var item in listofCustomer)
                         {
-                            Console.WriteLine("--------------------");
                             Console.WriteLine(item);
+                            Console.WriteLine("-------------------------");
                         }
                         Log.Information("Successfully retrieved and displayed customer information.");
+                        Console.WriteLine("");
                         Console.WriteLine("Press the Enter key to continue:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to continue.");
@@ -105,7 +109,7 @@ namespace ShopUI
                     catch (System.Exception)
                     {
                         Log.Warning("User's inputed phone number could not be found.");
-                        Console.WriteLine("Customer phone number could not be found.");
+                        Console.WriteLine("Customer phone number could not be found. Make sure you are spelling correctly.");
                         Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to try again.");

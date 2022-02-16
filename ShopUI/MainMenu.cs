@@ -12,7 +12,7 @@ namespace ShopUI
             Console.WriteLine("Welcome to Colorado's Market!\n");
             Console.WriteLine("Please select from the list of options below:\n");
             Console.WriteLine("========== Customer Menu ==========");
-            Console.WriteLine("[1] - Enroll as a new customer");
+            Console.WriteLine("[1] - Enroll a new customer");
             Console.WriteLine("[2] - Place an order");
             Console.WriteLine("[3] - View a customer's order history\n");
             Console.WriteLine("========== Employee Menu ==========");
