@@ -960,3 +960,12 @@ Phone: +1 1234567890
 2022-02-17 15:02:56.322 -05:00 [INF] User has selected to return to the main menu.
 2022-02-17 15:02:56.323 -05:00 [INF] Displaying MainMenu to user
 2022-02-17 15:02:57.301 -05:00 [INF] Exiting application
+2022-02-17 15:03:09.813 -05:00 [INF] Displaying ViewStoreOrder menu to user
+2022-02-17 15:03:12.015 -05:00 [INF] User selected to view a store's order history.
+2022-02-17 15:03:39.234 -05:00 [INF] User has entered a store ID.
+2022-02-17 15:03:39.320 -05:00 [INF] Successfully retrieved and displayed list of orders from store ID.
+2022-02-17 15:05:34.202 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 15:05:34.202 -05:00 [INF] Displaying ViewStoreOrder menu to user
+2022-02-17 15:05:36.438 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 15:05:36.438 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 15:05:37.766 -05:00 [INF] Exiting application
