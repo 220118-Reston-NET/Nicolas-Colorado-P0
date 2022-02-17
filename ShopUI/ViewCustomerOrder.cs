@@ -20,16 +20,9 @@ namespace ShopUI
         public void Display()
         {
             //The menu displays a list of customers the user can choose from.
-            Console.WriteLine("Displayed below is a list of customers currently in our database. To view a customer's order history, enter their email.\n");
-            Console.WriteLine("=============== Customer List ===============");
-            foreach (var item in _listofCustomer)
-            {
-                Console.WriteLine(item);
-                Console.WriteLine("-------------------------");
-            }
-            Console.WriteLine("");
+            Console.WriteLine("To display a customer's order history, you must enter their email.");
             Console.WriteLine("What would you like to do?\n");
-            Console.WriteLine("[1] - Select a customer by ID");
+            Console.WriteLine("[1] - Select a customer by email");
             Console.WriteLine("[2] - Return to Main Menu\n");
         }
 

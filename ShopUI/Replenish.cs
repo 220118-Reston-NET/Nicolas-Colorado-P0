@@ -55,6 +55,7 @@ namespace ShopUI
                             Console.WriteLine(item);
                         }
                         Log.Information("Successfully retrieved and displayed current inventory in a store.");
+                        Console.WriteLine("");
                     }
                     catch (FormatException)
                     {

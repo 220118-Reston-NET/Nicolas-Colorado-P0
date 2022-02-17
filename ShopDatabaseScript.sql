@@ -82,7 +82,6 @@ create table StoreFront
 insert StoreFront (Name, Address, Phone)
 values ('Colorado''s Market', '421 Cone Spiral Boulevard, Orlando, FL', '407-123-4567')     
             
-alter table 
 
 
 --Begin the inner join process to create relationships (One-to-many relationship)
@@ -90,19 +89,21 @@ alter table
 alter table Orders 
 add customerID int foreign key references Customer(customerID)
 
-select * from Customer c 
-inner join Orders o on c.customerID = o.customerID
-
 -- Orders + StoreFront
 alter table Orders
 add storeID int foreign key references StoreFront(storeID)
 
-select * from StoreFront sf 
-inner join Orders o on sf.storeID = o.storeID
+--Undo StoreID Foreign key restraint in Order table 
+alter table Orders 
+drop constraint FK__Orders__storeID__57DD0BE4;
+
+ALTER TABLE Orders DROP CONSTRAINT fk_city_ref_users;
+
+Unhandled exception. System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Orders__storeID__40058253". The conflict occurred in database "ShopDB", table "dbo.StoreFront", column 'storeID'.
 
 
 ---Error fixing after adding Products
-drop table LineItems 
+drop table LineItem 
 drop table ViewOrder 
 drop table ViewStoreOrder 
 
@@ -117,7 +118,7 @@ drop table ViewStoreOrder
 
 --(Many-to-Many Relationships)
 -- Orders + Products = Lineitems
-create table LineItems --This table is now known as LineItems
+create table LineItem --This table is now known as LineItems
 (
 	orderID int foreign key references Orders(orderID),
 	productID int foreign key references Product(productID),

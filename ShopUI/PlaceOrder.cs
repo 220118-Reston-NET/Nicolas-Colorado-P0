@@ -21,9 +21,9 @@ namespace ShopUI
             _listofStoreFront = _storeBL.GetAllStoreFront();
         }
         private static List<LineItem> orderedItems = new List<LineItem>();
-        private static List<Product> listOfProducts = new List<Product>();
         public static int _customerID;
         public static int _storeID;
+        public static double _priceTotal;
         public static int _prodID;
         public static int _qty;
 
@@ -89,7 +89,7 @@ namespace ShopUI
                     catch (System.Exception)
                     {
                         Log.Warning("Customer email could not be found in database.");
-                        Console.Write("Customer email could not be found. Make sure you are spelling correctly.");
+                        Console.WriteLine("Customer email could not be found. Make sure you are spelling correctly.");
                         Console.WriteLine("Please press the Enter key to try again:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to try again.");
@@ -134,11 +134,12 @@ namespace ShopUI
                             Console.WriteLine("-------------------------");                    
                         }
                         Log.Information("Successfully retrieved and displayed current inventory in a store.");
+                        Console.WriteLine("");
                     }
                     catch (System.Exception)
                     {
                         Log.Warning("Products could not be found in store.");
-                        Console.Write("There are currently no products in this store.");
+                        Console.WriteLine("There are currently no products in this store.");
                         Console.WriteLine("Press the Enter button to try again:");
                         Console.ReadLine();
                         Log.Information("User pressed the Enter key to try again.");
@@ -212,11 +213,14 @@ namespace ShopUI
                             }
                             catch (System.Exception)
                             {
+                                _priceTotal = 0;
                                 Log.Warning("User entered more products than what's currently stored in the inventory.");
                                 Console.WriteLine("You cannot order more products than the inventory holds!");
                                 Console.WriteLine("Press the the Enter key to try again:");
                                 Console.ReadLine();
                                 Log.Information("User pressed the Enter key to try again.");
+                                shoploop = false;
+                                return "PlaceOrder";
                             }
                         }
                         else if (orderchoice == "2")
@@ -225,7 +229,7 @@ namespace ShopUI
 
                             //Break the order menu loop to finally check out with the products.
                             shoploop = false;
-                            double priceTotal = 0;
+                            _priceTotal = 0;
                             Console.WriteLine("Order has been checked out!");
 
                             Product _product = new Product();
@@ -235,11 +239,11 @@ namespace ShopUI
                                 //Using the variable stored above, Total Price can be created from the ordered products.
                                 //Total Price is now being stored in the database.
                                 _product = _storeBL.GetProductbyStoreID(_storeID).Find(p => p.productID == items.productID);
-                                priceTotal += _product.Price * items.Quantity;
+                                _priceTotal += _product.Price * items.Quantity;
                             }
                             //Total price expressed with two decimal places.
-                            priceTotal = Math.Round(priceTotal, 2);
-                            Console.WriteLine("Total Price: $" + priceTotal);
+                            _priceTotal = Math.Round(_priceTotal, 2);
+                            Console.WriteLine("Total Price: $" + _priceTotal);
 
                             //One last menu to finalize the order, or cancel it.
                             Console.WriteLine("");
@@ -252,7 +256,7 @@ namespace ShopUI
                                 Log.Information("User selected to submit an order.");
                                 //Adds new order to the database using the StoreFront BL.
                                 //Inventory updated with subtracted quantity of products in SQL Repository.
-                                _orderBL.PlaceNewOrder(_customerID, _storeID, priceTotal, orderedItems);
+                                _orderBL.PlaceNewOrder(_customerID, _storeID, _priceTotal, orderedItems);
                                 
                                 Console.WriteLine("Thank you for your order!");
                                 Console.WriteLine("Please press the Enter key to continue:");

@@ -76,7 +76,7 @@ namespace ShopDL
         /// /// <param name="p_priceTotal"></param>
         /// /// <param name="p_orderedItems"></param>
         /// <returns> Returns an order, total price, and update to the inventory. </returns>
-        Orders PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems);
+        void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems);
 
     }
 }

@@ -18,7 +18,7 @@ namespace ShopUI
         public void Display()
         {
             //The menu that shows a list of stores that a user can choose from.
-            Console.WriteLine("Displayed below is a list of stores currently in our database. To view a store's order history, enter its ID.\n");
+            Console.WriteLine("Displayed below is a list of stores currently in our database. To view a store's order history, you must enter its ID.\n");
             Console.WriteLine("=============== Store List ===============");
             foreach (var item in _listofStoreFront)
             {

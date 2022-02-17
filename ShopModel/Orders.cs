@@ -23,7 +23,7 @@ namespace ShopModel
 
         public override string ToString()
         {
-            return $"OrderID: {orderID}\nStoreID: {storeID}\nTotal Price: {TotalPrice}";
+            return $"OrderID: {orderID}\nCustomerID: {customerID}\nStoreID: {storeID}\nTotal Price: {TotalPrice}";
         }
     }
 }

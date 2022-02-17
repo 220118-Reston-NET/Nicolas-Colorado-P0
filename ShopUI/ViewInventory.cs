@@ -9,7 +9,6 @@ namespace ShopUI
 
         //Dependency Injection with StoreFrontBL
         private IStoreFrontBL _storeBL;
-
         public ViewInventory(IStoreFrontBL p_storeBL)
         {
             _storeBL = p_storeBL;
@@ -20,10 +19,11 @@ namespace ShopUI
         {
             //The menu that displays a list of stores in the database that the user can choose from to get the inventory.
             Console.WriteLine("Displayed below is a list of stores currently available for online orders. To view a store's inventory, enter its ID.\n");
+             Console.WriteLine("=============== Store List ===============");
             foreach (var item in _listofStoreFront)
             {
-                Console.WriteLine("====================");
                 Console.WriteLine(item);
+                Console.WriteLine("-------------------------");
             }
             Console.WriteLine("");
             Console.WriteLine("What would you like to do?\n");
@@ -56,7 +56,7 @@ namespace ShopUI
                         foreach (var item in listofProducts)
                         {
                             Console.WriteLine(item);
-                            Console.WriteLine("====================");
+                            Console.WriteLine("-------------------------");
                         }
                         Log.Information("Successfully retrieved and displayed current inventory in a store.");
                         Console.WriteLine("");

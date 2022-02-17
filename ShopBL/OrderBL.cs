@@ -15,9 +15,9 @@ namespace ShopBL
         //====================================
 
 
-        public Orders PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
+        public void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
         {
-            return _repo.PlaceNewOrder(p_customerID, p_storeID, p_priceTotal, p_orderedItems);
+            _repo.PlaceNewOrder(p_customerID, p_storeID, p_priceTotal, p_orderedItems);
         }
     }
 }

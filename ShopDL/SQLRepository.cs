@@ -39,9 +39,9 @@ namespace ShopDL
         {
             List<Orders> listofOrders = new List<Orders>();
 
-            string sqlQuery = @"select o.orderID, o.storeID, o.TotalPrice from Customer c 
-                            inner join ViewOrder vo on c.customerID = vo.customerID 
-                            inner join Orders o on o.orderID = vo.orderID
+            string sqlQuery = @"select o.orderID, o.storeID, o.TotalPrice from Orders o
+                            inner join ViewOrder vo on o.orderID = vo.orderID 
+                            inner join Customer c on c.customerID = vo.customerID
                             where c.customerID = @customerID";
                             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
@@ -136,9 +136,9 @@ namespace ShopDL
         {
             List<Orders> listofOrders = new List<Orders>();
 
-            string sqlQuery = @"select o.orderID, o.customerID, o.TotalPrice from StoreFront sf 
-                            inner join ViewStoreOrder vso on sf.storeID = vso.storeID 
-                            inner join Orders o on o.orderID = vso.orderID
+            string sqlQuery = @"select o.orderID, o.customerID, o.TotalPrice from Orders o 
+                            inner join ViewStoreOrder vso on o.orderID = vso.orderID 
+                            inner join StoreFront sf on sf.storeID = vso.storeID
                             where sf.storeID = @storedID";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
@@ -275,20 +275,21 @@ namespace ShopDL
         }
 
 
-        public Orders PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
+        public void PlaceNewOrder(int p_customerID, int p_storeID, double p_priceTotal, List<LineItem> p_orderedItems)
         {
-            Orders order = new Orders();
+            
             //Creates an order, prepares lineitems, and updates the inventory.
             string sqlQuery = @"insert into Orders
-                            values(@customerID, @storeID, @TotalPrice);
+                            values(@customerID, @TotalPrice, @storeID);
                             SELECT SCOPE_IDENTITY();";
             
             string sqlQuery2 = @"insert into LineItem
-                            values(@orderID, @productID, @Quantity)";
+                            values(@orderID, @productID, @Quantity);";
 
             string sqlQuery3 = @"update Inventory
                             set Quantity = Quantity - @Quantity
-                            where storeID = @storeID AND productID = @productID";
+                            where storeID = @storeID
+                            AND productID = @productID;";
             
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
@@ -297,18 +298,17 @@ namespace ShopDL
 
                 SqlCommand command = new SqlCommand(sqlQuery, con);
                 command.Parameters.AddWithValue("@customerID", p_customerID);
-                command.Parameters.AddWithValue("@storeID", p_storeID);
                 command.Parameters.AddWithValue("@TotalPrice", p_priceTotal);
+                command.Parameters.AddWithValue("@storeID", p_storeID);
+                
 
+                int p_orderID = Convert.ToInt32(command.ExecuteScalar());
 
-                int orderID = Convert.ToInt32(command.ExecuteScalar());
-
-                // command.ExecuteNonQuery();
 
                 foreach (var item in p_orderedItems)
                 {
                     SqlCommand command2 = new SqlCommand(sqlQuery2, con);
-                    command2.Parameters.AddWithValue("@orderID", orderID);
+                    command2.Parameters.AddWithValue("@orderID", p_orderID);
                     command2.Parameters.AddWithValue("@productID", item.productID);
                     command2.Parameters.AddWithValue("@Quantity", item.Quantity);
 
@@ -322,7 +322,6 @@ namespace ShopDL
                     command3.ExecuteNonQuery();
                 }    
             }
-            return order; 
         }
         
         // public List<Product> GetAllProducts()
