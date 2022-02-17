@@ -847,3 +847,116 @@ Phone: +1 1234567890
 2022-02-17 00:32:14.148 -05:00 [INF] User has selected to return to the main menu.
 2022-02-17 00:32:14.149 -05:00 [INF] Displaying MainMenu to user
 2022-02-17 00:49:23.215 -05:00 [INF] Exiting application
+2022-02-17 12:26:49.314 -05:00 [INF] Displaying PlaceOrder menu to user
+2022-02-17 12:26:52.241 -05:00 [INF] User selected to place an order.
+2022-02-17 12:27:04.229 -05:00 [INF] User entered in an email.
+2022-02-17 12:27:04.377 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 12:27:08.180 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 12:27:24.300 -05:00 [INF] User has entered a store ID.
+2022-02-17 12:27:24.364 -05:00 [INF] Successfully retrieved and displayed current inventory in a store.
+2022-02-17 12:27:26.078 -05:00 [INF] User selected to add product to an order.
+2022-02-17 12:27:36.981 -05:00 [INF] User has entered a product ID.
+2022-02-17 12:27:38.672 -05:00 [INF] User has entered a product qty.
+2022-02-17 12:27:39.662 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 12:27:41.365 -05:00 [INF] User selected to check out an order.
+2022-02-17 12:41:11.234 -05:00 [INF] User selected to submit an order.
+2022-02-17 12:43:32.631 -05:00 [INF] Displaying PlaceOrder menu to user
+2022-02-17 12:43:34.947 -05:00 [INF] User selected to place an order.
+2022-02-17 12:43:45.885 -05:00 [INF] User entered in an email.
+2022-02-17 12:43:46.035 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 12:43:50.404 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 12:43:51.524 -05:00 [INF] User has entered a store ID.
+2022-02-17 12:43:51.591 -05:00 [INF] Successfully retrieved and displayed current inventory in a store.
+2022-02-17 12:43:53.131 -05:00 [INF] User selected to add product to an order.
+2022-02-17 12:44:03.240 -05:00 [INF] User has entered a product ID.
+2022-02-17 12:44:05.878 -05:00 [INF] User has entered a product qty.
+2022-02-17 12:44:18.689 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 12:44:20.516 -05:00 [INF] User selected to check out an order.
+2022-02-17 12:44:22.358 -05:00 [INF] User selected to submit an order.
+2022-02-17 12:45:15.873 -05:00 [INF] Displaying PlaceOrder menu to user
+2022-02-17 12:45:17.914 -05:00 [INF] User selected to place an order.
+2022-02-17 12:45:26.380 -05:00 [INF] User entered in an email.
+2022-02-17 12:45:26.535 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 12:45:28.572 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 12:45:29.441 -05:00 [INF] User has entered a store ID.
+2022-02-17 12:45:29.506 -05:00 [INF] Successfully retrieved and displayed current inventory in a store.
+2022-02-17 12:45:30.741 -05:00 [INF] User selected to add product to an order.
+2022-02-17 12:45:33.432 -05:00 [INF] User has entered a product ID.
+2022-02-17 12:45:35.080 -05:00 [INF] User has entered a product qty.
+2022-02-17 12:45:36.423 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 12:45:37.358 -05:00 [INF] User selected to check out an order.
+2022-02-17 12:45:38.646 -05:00 [INF] User selected to submit an order.
+2022-02-17 12:52:49.006 -05:00 [INF] Displaying PlaceOrder menu to user
+2022-02-17 12:52:51.385 -05:00 [INF] User selected to place an order.
+2022-02-17 12:53:05.898 -05:00 [INF] User entered in an email.
+2022-02-17 12:53:06.055 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 12:53:07.095 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 12:53:07.839 -05:00 [INF] User has entered a store ID.
+2022-02-17 12:53:07.911 -05:00 [INF] Successfully retrieved and displayed current inventory in a store.
+2022-02-17 12:53:09.337 -05:00 [INF] User selected to add product to an order.
+2022-02-17 12:53:11.406 -05:00 [INF] User has entered a product ID.
+2022-02-17 12:53:12.592 -05:00 [INF] User has entered a product qty.
+2022-02-17 12:53:13.791 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 12:53:15.099 -05:00 [INF] User selected to check out an order.
+2022-02-17 12:53:35.328 -05:00 [INF] User selected to submit an order.
+2022-02-17 12:53:40.597 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 12:53:40.598 -05:00 [INF] Displaying PlaceOrder menu to user
+2022-02-17 12:53:42.944 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 12:53:42.944 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 13:33:38.855 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 13:33:41.277 -05:00 [INF] User selected to view a customer's order history.
+2022-02-17 13:33:48.877 -05:00 [INF] User entered in an email.
+2022-02-17 13:33:49.039 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 13:33:51.572 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 13:33:51.622 -05:00 [INF] Successfully retrieved and displayed list of orders from customer ID.
+2022-02-17 13:34:22.353 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 13:34:22.353 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 13:34:26.008 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 13:34:26.008 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 13:34:29.690 -05:00 [INF] Displaying ViewStoreOrder menu to user
+2022-02-17 13:34:34.812 -05:00 [INF] User selected to view a store's order history.
+2022-02-17 13:34:35.385 -05:00 [INF] User has entered a store ID.
+2022-02-17 14:02:51.046 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 14:02:54.539 -05:00 [INF] User selected to view a customer's order history.
+2022-02-17 14:03:05.100 -05:00 [INF] User entered in an email.
+2022-02-17 14:03:05.246 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 14:03:06.293 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 14:03:06.343 -05:00 [INF] Successfully retrieved and displayed list of orders from customer ID.
+2022-02-17 14:06:31.029 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 14:06:31.029 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 14:09:22.438 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 14:09:22.438 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 14:09:29.882 -05:00 [INF] Displaying ViewStoreOrder menu to user
+2022-02-17 14:09:30.784 -05:00 [INF] User selected to view a store's order history.
+2022-02-17 14:09:31.837 -05:00 [INF] User has entered a store ID.
+2022-02-17 14:10:43.217 -05:00 [INF] Displaying ViewStoreOrder menu to user
+2022-02-17 14:10:45.521 -05:00 [INF] User selected to view a store's order history.
+2022-02-17 14:10:46.240 -05:00 [INF] User has entered a store ID.
+2022-02-17 14:10:46.295 -05:00 [INF] Successfully retrieved and displayed list of orders from store ID.
+2022-02-17 14:10:48.585 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 14:10:48.585 -05:00 [INF] Displaying ViewStoreOrder menu to user
+2022-02-17 14:10:49.838 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 14:10:49.838 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 14:10:51.566 -05:00 [INF] Exiting application
+2022-02-17 14:45:43.756 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 14:45:56.640 -05:00 [INF] User selected to view a customer's order history.
+2022-02-17 14:46:06.007 -05:00 [INF] User entered in an email.
+2022-02-17 14:46:06.169 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 14:46:07.497 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 14:46:07.547 -05:00 [INF] Successfully retrieved and displayed list of orders from customer ID.
+2022-02-17 14:59:27.418 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 14:59:27.418 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 14:59:29.898 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 14:59:29.898 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 14:59:31.434 -05:00 [INF] Exiting application
+2022-02-17 14:59:44.028 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 14:59:46.139 -05:00 [INF] User selected to view a customer's order history.
+2022-02-17 14:59:53.821 -05:00 [INF] User entered in an email.
+2022-02-17 14:59:53.975 -05:00 [INF] Successfully retrieved and displayed customer information.
+2022-02-17 14:59:55.130 -05:00 [INF] User pressed the Enter key to continue:
+2022-02-17 14:59:55.181 -05:00 [INF] Successfully retrieved and displayed list of orders from customer ID.
+2022-02-17 15:02:54.618 -05:00 [INF] User pressed the Enter key to continue.
+2022-02-17 15:02:54.618 -05:00 [INF] Displaying ViewCustomerOrder menu to user
+2022-02-17 15:02:56.322 -05:00 [INF] User has selected to return to the main menu.
+2022-02-17 15:02:56.323 -05:00 [INF] Displaying MainMenu to user
+2022-02-17 15:02:57.301 -05:00 [INF] Exiting application

@@ -39,10 +39,9 @@ namespace ShopDL
         {
             List<Orders> listofOrders = new List<Orders>();
 
-            string sqlQuery = @"select o.orderID, o.storeID, o.TotalPrice from Orders o
-                            inner join ViewOrder vo on o.orderID = vo.orderID 
-                            inner join Customer c on c.customerID = vo.customerID
-                            where c.customerID = @customerID";
+            string sqlQuery = @"select o.orderID, c.customerId, o.storeID, o.TotalPrice from Orders o  
+                            inner join Customer c on o.customerID = c.customerID 
+                            where o.customerID = @customerID";
                             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -59,8 +58,9 @@ namespace ShopDL
                     {
                         //reader column is not based on table structure but on your select query statement is displaying
                         orderID = reader.GetInt32(0),
-                        storeID = reader.GetInt32(1),
-                        TotalPrice = reader.GetDouble(2)
+                        customerID = reader.GetInt32(1),
+                        storeID = reader.GetInt32(2),
+                        TotalPrice = reader.GetDouble(3)
                     });
                 }
             }
@@ -136,10 +136,9 @@ namespace ShopDL
         {
             List<Orders> listofOrders = new List<Orders>();
 
-            string sqlQuery = @"select o.orderID, o.customerID, o.TotalPrice from Orders o 
-                            inner join ViewStoreOrder vso on o.orderID = vso.orderID 
-                            inner join StoreFront sf on sf.storeID = vso.storeID
-                            where sf.storeID = @storedID";
+            string sqlQuery = @"select o.orderID, sf.storeID, o.customerID, o.TotalPrice from Orders o  
+                            inner join StoreFront sf on o.storeID = sf.storeID
+                            where o.storeID = @storeID";
             
             using (SqlConnection con = new SqlConnection(_connectionStrings))
             {
@@ -155,8 +154,9 @@ namespace ShopDL
                     listofOrders.Add(new Orders()
                     {
                         orderID = reader.GetInt32(0),
-                        customerID = reader.GetInt32(1),
-                        TotalPrice = reader.GetDouble(2)
+                        storeID = reader.GetInt32(1),
+                        customerID = reader.GetInt32(2),
+                        TotalPrice = reader.GetDouble(3)
                     });
                 }
             }
@@ -280,7 +280,7 @@ namespace ShopDL
             
             //Creates an order, prepares lineitems, and updates the inventory.
             string sqlQuery = @"insert into Orders
-                            values(@customerID, @TotalPrice, @storeID);
+                            values(@TotalPrice, @customerID, @storeID);
                             SELECT SCOPE_IDENTITY();";
             
             string sqlQuery2 = @"insert into LineItem
@@ -297,8 +297,8 @@ namespace ShopDL
                 con.Open();
 
                 SqlCommand command = new SqlCommand(sqlQuery, con);
-                command.Parameters.AddWithValue("@customerID", p_customerID);
                 command.Parameters.AddWithValue("@TotalPrice", p_priceTotal);
+                command.Parameters.AddWithValue("@customerID", p_customerID);
                 command.Parameters.AddWithValue("@storeID", p_storeID);
                 
 

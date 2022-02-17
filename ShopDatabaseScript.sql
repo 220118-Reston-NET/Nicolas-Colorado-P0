@@ -162,11 +162,12 @@ create table ViewOrder
 )
 
 
-select o.orderID, o.storeID, o.StoreFrontLocation, o.TotalPrice from Customer c 
+select o.orderID, o.customerID, o.TotalPrice from Customer c 
 inner join ViewOrder vo on c.customerID = vo.customerID 
 inner join Orders o on o.orderID = vo.orderID 
 
-
+select c.customerId, o.orderID, o.TotalPrice from Orders o  
+inner join Customer c on o.customerID  = c.customerID 
 
 --Show orders made under a store
 --StoreFront + orders = ViewStoreOrder
@@ -177,9 +178,14 @@ create table ViewStoreOrder
 	orderID int foreign key references Orders(orderID)
 )
 
-select o.orderID, o.customerID, o.StoreFrontLocation, o.TotalPrice from StoreFront sf 
+select o.orderID, o.storeID, o.customerID, o.TotalPrice from StoreFront sf 
 inner join ViewStoreOrder vso on sf.storeID = vso.storeID 
 inner join Orders o on o.orderID = vso.orderID 
+
+select o.orderID, o.storeID, o.customerID, o.TotalPrice from Orders o 
+inner join ViewStoreOrder vso on o.orderID = vso.orderID 
+inner join StoreFront sf on sf.storeID = vso.storeID
+where sf.storeID = storeID
 
 ------select max(e.empId) from Employee e
 
